@@ -1,0 +1,130 @@
+<div class="container-fluide">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">H_4_SCOOL</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+           
+          </ul>
+          <div class="form-inline mt-2 mt-md-0">
+            <button class="btn btn-primary" (click)="etat = !etat">Sing Up <i class="fa fa-user-o"></i></button>
+            
+          </div>
+        </div>
+      </nav>
+
+    <div class="text-center" id="form">
+      
+        
+            <div class="" *ngIf="etat == false">
+                <form  #userForm="ngForm" (ngSubmit)="addUser(userForm.value)" class="form-signin">
+                    <div class="">
+                        <img class="mb-4 profil" src="../../assets/images/profil.jpg" alt="" width="185" height="185">
+                    </div>
+                   
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputEmail" class="sr-only">Login</label>
+                    <input type="text" id="inputEmail" class="form-control" name="fname" NgModel placeholder="Email address" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" name="lname" NgModel placeholder="Password" required>
+                    <div class="checkbox mb-3">
+                      <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                      </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fa fa-sing-in"></i>Sign in</button>
+                    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+                  </form>
+            </div>
+
+            <div class="" *ngIf="etat != false">
+                <div class="col-lg-4 form-signin pano">
+
+                    <form #imageForm="ngForm" (ngSubmit)="OnSubmit(imageForm.value)" name="form">
+                        <div class="" id="prev">
+                            <img class="mb-4 profil" id="prev" [src]="imageurl"   alt="" width="185" height="185">
+                        </div>
+                        <div class="form-group ">
+                            <div class="custom-file">
+                                <input type="file" #Image accept="image/*" name="photo" ngModel (change)="handlerFileInput($event.target.files)" class="custom-file-input" id="inputGroupFile01"/>
+                                <label class="custom-file-label" for="inputGroupFile01">Photo de Profil</label>
+                            </div>
+                            
+                            
+                        </div>
+                       
+    
+                        <div class="form-group decal">
+                            <input type="text" name="nom" ngModel
+                                class="form-control" placeholder="Nom..">
+                           
+                        </div>
+                        <div class="form-group decal">
+                            <input type="text" name="login" ngModel
+                                class="form-control" placeholder="Login.." >
+                            
+                        </div>
+                        <div class="form-group decal">
+                            <input type="password" name="password" ngModel
+                                class="form-control" placeholder="Password.." >
+                            
+                        </div>
+
+                        <div class="form-group decal">
+                            <input type="email" name="email" ngModel
+                                class="form-control" placeholder="Email...">
+                           
+                        </div>
+    
+                        <div class="form-group decal">
+                            <input type="text" name="adresse" ngModel
+                                class="form-control" placeholder="Adresse...">
+                           
+                        </div>
+
+                        
+                        <div class="form-group decal">
+                            <select class="form-control" name="classe" ngModel>
+                                <option>Votre Classe</option>
+                                <option>6 eme</option>
+                                <option>5 eme</option>
+                                <option>4 eme</option>
+
+                            </select>
+                            
+                        </div>
+
+                        <div class="form-group decal">
+                            <mat-form-field>
+                            <input matInput [matDatepicker]="picker" name="daten" ngModel placeholder="Date de Naissance"
+                                class="form-control" >
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="form-group decal">
+                            <label class="checkbox-inline"><input type="checkbox"
+                                ng-required="true"> I accept the <a href="#">Terms
+                                    &amp; Conditions</a></label>
+                        </div>
+    
+                        <div class="form-group decal">
+                            <button type="submit" [disabled]="Image.value=='' || !imageForm.valid" class="btn btn-primary btn-lg" 
+                                >Save</button>
+                            <button class="btn btn-danger btn-lg">Cancel</button>
+    
+                        </div>
+    
+                    </form>
+    
+    
+                </div>
+            </div>
+        
+       
+    </div>
+   <app-footer></app-footer>
+</div>

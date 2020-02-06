@@ -1,0 +1,44 @@
+ #section{
+    position: relative;
+    margin-top: 50px;
+    padding: 20px;
+} 
+#footer{
+    background-color:black;
+    color: white;
+}
+.menu{
+    width: 200px;
+    padding: 10px;
+    background-color: cadetblue;
+    
+}
+.chapitre span{
+    width: 30%;
+    height: 20%;
+    border: 1px solid rgb(133, 117, 117);
+    background-color: blue;
+    text-align: center;
+}
+.chapitre{
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    margin: 0 0 3px 0;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.point a {
+    display: block;
+    color: black;
+    background-color: white;
+    padding-left: 30px;
+    text-decoration: none;
+    border-radius: 1px solid red;
+}
+
+.point a:hover{
+    color: black;
+    text-decoration: yellow;
+}
