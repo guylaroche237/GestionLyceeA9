@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 //import { from } from 'rxjs';
 import { Student } from '../classes/student';
 import { User } from '../classes/user';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class FileService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   private baseUrl:string = "http://localhost:8000/api";
   private path :string= "http://localhost:8080/api/student";
@@ -17,19 +18,17 @@ export class FileService {
   
   saveStudent(stu:Student): Observable<any> {
   return  this.http.post(this.baseUrl+'/save/student',stu);
-    console.log(stu);
+    
   }
-  savePhoto(pho:File): Observable<any> {
+  savePhoto(pho:File,kimg:string): Observable<any> {
     const formdata: FormData = new FormData();  
     
    formdata.append('file', pho); 
-    return  this.http.post(this.baseUrl+'/profil/save',formdata);
-      console.log(pho);
+    return  this.http.post(this.baseUrl+'/profil/save/'+kimg,formdata);
+      
     }
 
-  sauvegarderStudent(eleve:Student): Observable<any>{
-      return this.http.post(this.baseUrl+'/save/stud?nom='+eleve.nom+'&login='+eleve.login+'&password='+eleve.password+'&email='+eleve.email+'&photo='+eleve.photo+'&adresse='+eleve.adresse+'&date='+eleve.date+'&classe='+eleve.sale,eleve);
-  }
+  
   getAllStudent(): Observable<any>{
     return this.http.get(this.baseUrl+'/all/students');
   }
@@ -42,6 +41,29 @@ export class FileService {
 
   saveUser(usr:User):Observable<any>{
        return this.http.post(this.baseUrl+'/user',usr);
+  }
+  getStudentByLoginAndPassword(login:string,password:string):Observable<any>{
+    return this.http.get(this.baseUrl+'/student/'+login+'/'+password);
+  }
+
+  getKeyImage(){
+    const chars = '0123456789abcdefghijklmnopkwxzjAZERTYUIOPMLKJHGFDSQWXCVBN';
+    var result = '';
+    for(var i = 40;i>0;i--){
+      result += chars[Math.floor(Math.random()*chars.length)];
+    }
+    
+    return result;
+  }
+  Authentification(user:User){
+    if(user){
+      alert("tout est ok");
+      this.router.navigateByUrl("/home");
+    }else{
+      alert("error error error");
+      this.router.navigateByUrl("/login");
+    }
+    
   }
 
 }

@@ -8,6 +8,7 @@ import { User } from '../classes/user';
 import { Student } from '../classes/student';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,20 +21,17 @@ export class LoginComponent implements OnInit {
   fileToUpload: File = null;
   public user:Student;
   list: Student[];
+  cleimg:string;
+ 
   
 
   constructor(private filedb: FileService) { }
 
   ngOnInit() {
-    this.loadProduit();
-    if(this.list){
-      console.log(this.list);
-      console.log("la liste n'est pas vide");
-    }else{
-      console.log("vide vide vide");
-    }
+    //const chifre = Math.floor(Math.random()*Math.floor(100));
+    this.cleimg = this.filedb.getKeyImage();
     
-   
+    this.loadProduit();
   }
   
   handlerFileInput(file: FileList){
@@ -51,33 +49,33 @@ export class LoginComponent implements OnInit {
 
   OnSubmit(val){
    
-   console.log(val);
-   const p = val;
-   p.photo = this.fileToUpload;
-   //this.user.nom = data.nom;
-   //this.user.login=data.login;
-   //this.user.password = data.password;
-   //this.user.email = data.email;
-   //this.user.date = data.date;
-   //this.user.sale = data.sale;
-   //this.user.photo = this.fileToUpload;
-    
-
-   this.filedb.savePhoto(p.photo).subscribe(
-    res => {
-        
+  
+   var p = val;
+   
+   p.photo = this.cleimg;
+   //this.user.adresse = val.adresse;
+   //this.user.email = val.email;
+   //this.user.keyimg = this.keyimg;
+   //this.user.password = val.password;
+   //this.user.sale = val.sale;
+   
+    val.keyimg = this.cleimg;
+    console.log(val);
+   this.filedb.savePhoto(this.fileToUpload,this.cleimg).subscribe(
+    res => {   
       this.loadProduit();
-
   });
-   console.log(p);
+
+
+  this.filedb.saveStudent(val).subscribe(
+    res =>{
+      this.loadProduit();
+    }
+  )
+   
    
   
- // data.photo = this.imageurl;
- // console.log(data);
-   
-  //  this.filedb.saveStudent(p);
-    
-    //alert("sauvegarder avec succes");
+ 
 
   }
 
@@ -87,6 +85,26 @@ export class LoginComponent implements OnInit {
       error => {console.log('Une erreur s est produite')},
       () => { console.log('chargement des produits effectuer')}
     );
+  }
+
+  addUser(donner){
+
+    
+     this.filedb.getStudentByLoginAndPassword(donner.login,donner.password).subscribe(
+      data => {
+        this.user = data,
+         console.log(this.user),
+         this.filedb.Authentification(this.user)
+         //if(this.user){console.log(true);}else{console.log(true);}
+
+        },
+      error => {console.log("utilisateur non trouver")},
+      () => {}
+      
+    );
+  
+   
+    
   }
   
   

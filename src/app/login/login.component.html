@@ -19,16 +19,16 @@
       
         
             <div class="" *ngIf="etat == false">
-                <form  #userForm="ngForm" (ngSubmit)="addUser(userForm.value)" class="form-signin">
+                <form  #studentForm="ngForm" (ngSubmit)="addUser(studentForm.value)" class="form-signin" name="form">
                     <div class="">
                         <img class="mb-4 profil" src="../../assets/images/profil.jpg" alt="" width="185" height="185">
                     </div>
                    
                     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
                     <label for="inputEmail" class="sr-only">Login</label>
-                    <input type="text" id="inputEmail" class="form-control" name="fname" NgModel placeholder="Email address" required autofocus>
+                    <input type="text" id="inputEmail" class="form-control" name="login" ngModel placeholder="Login .." required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" name="lname" NgModel placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control" name="password" ngModel placeholder="Password" required>
                     <div class="checkbox mb-3">
                       <label>
                         <input type="checkbox" value="remember-me"> Remember me
@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-group ">
                             <div class="custom-file">
-                                <input type="file" #Image accept="image/*" name="photo" ngModel (change)="handlerFileInput($event.target.files)" class="custom-file-input" id="inputGroupFile01"/>
+                                <input type="file" #Image accept="image/*" name="keyimg" ngModel (change)="handlerFileInput($event.target.files)" class="custom-file-input" id="inputGroupFile01"/>
                                 <label class="custom-file-label" for="inputGroupFile01">Photo de Profil</label>
                             </div>
                             
@@ -98,7 +98,7 @@
 
                         <div class="form-group decal">
                             <mat-form-field>
-                            <input matInput [matDatepicker]="picker" name="daten" ngModel placeholder="Date de Naissance"
+                            <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Date de Naissance"
                                 class="form-control" >
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>

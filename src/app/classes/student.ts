@@ -4,7 +4,7 @@ export class Student{
    public  login:string;
    public  password:string;
    public email:string;
-   public  photo: File;
+   public  keyimg: string;
    public  adresse:string;
     public date:Date;
     public sale:string;
