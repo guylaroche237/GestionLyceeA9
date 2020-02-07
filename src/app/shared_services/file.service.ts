@@ -27,21 +27,14 @@ export class FileService {
     return  this.http.post(this.baseUrl+'/profil/save/'+kimg,formdata);
       
     }
-
-  
+    
   getAllStudent(): Observable<any>{
     return this.http.get(this.baseUrl+'/all/students');
   }
-
-  
   getUsers(){
     return this.http.get(this.baseUrl+'/users');
-   // .map((response:Response)=>response.json()).catch(this.eror);
   }
 
-  saveUser(usr:User):Observable<any>{
-       return this.http.post(this.baseUrl+'/user',usr);
-  }
   getStudentByLoginAndPassword(login:string,password:string):Observable<any>{
     return this.http.get(this.baseUrl+'/student/'+login+'/'+password);
   }
@@ -57,10 +50,10 @@ export class FileService {
   }
   Authentification(user:User){
     if(user){
-      alert("tout est ok");
+      //Connection effectuer avec Succes
       this.router.navigateByUrl("/home");
     }else{
-      alert("error error error");
+      //login ou password Erroner
       this.router.navigateByUrl("/login");
     }
     
