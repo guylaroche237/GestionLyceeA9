@@ -1,0 +1,40 @@
+.menu{
+    width: 250px;
+    padding: 10px;
+    background-color: cadetblue;
+    
+}
+.chapitre span{
+    width: 30%;
+    height: 20%;
+    border: 1px solid rgb(133, 117, 117);
+    background-color: white;
+    text-align: center;
+}
+.chapitre{
+    padding: 5px;
+    cursor: pointer;
+    position: relative;
+    margin: 0 0 3px 0;
+    font-weight: bold;
+    border: 1px solid black;
+}
+.point{
+    background-color:black;
+}
+
+.point a {
+    display: block;
+    color: blue;
+    background-color: gold;
+    padding-left: 30px;
+    text-decoration: none;
+    border-radius: 1px solid red;
+    margin: 5px;
+}
+
+.point a:hover{
+    color:blue;
+    text-decoration: red;
+    background-color: white;
+}

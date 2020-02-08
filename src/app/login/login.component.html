@@ -86,11 +86,9 @@
 
                         
                         <div class="form-group decal">
-                            <select class="form-control" name="classe" ngModel>
-                                <option>Votre Classe</option>
-                                <option>6 eme</option>
-                                <option>5 eme</option>
-                                <option>4 eme</option>
+                            <select class="form-control" name="classe" ngModel >
+                                <option *ngFor="let elt of listesClasses">{{elt.nom}}</option>
+                               
 
                             </select>
                             

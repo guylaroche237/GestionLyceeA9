@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FileService } from './shared_services/file.service';
+import { ClassesService } from './shared_services/classes.service';
 
 
 
@@ -17,6 +18,7 @@ import { AppService } from './app.service';
 import { from } from 'rxjs';
 import { FooterComponent } from './footer/footer.component';
 import { MaterialModule } from './material.module';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 
@@ -26,7 +28,8 @@ import { MaterialModule } from './material.module';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { MaterialModule } from './material.module';
     
   ],
   
-  providers: [AppService,FileService],
+  providers: [AppService,FileService,ClassesService],
     
   bootstrap: [AppComponent]
 })

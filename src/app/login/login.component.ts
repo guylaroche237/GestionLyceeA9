@@ -6,6 +6,8 @@ import { from} from 'rxjs';
 import { FileService} from '../shared_services/file.service';
 import { User } from '../classes/user';
 import { Student } from '../classes/student';
+import { Classes } from '../classes/classes';
+import { ClassesService} from '../shared_services/classes.service';
 
 
 
@@ -22,16 +24,18 @@ export class LoginComponent implements OnInit {
   public user:Student;
   list: Student[];
   cleimg:string;
+  private listesClasses :Classes[];
  
   
 
-  constructor(private filedb: FileService) { }
+  constructor(private filedb: FileService,private claservice:ClassesService) { }
 
   ngOnInit() {
     //const chifre = Math.floor(Math.random()*Math.floor(100));
     this.cleimg = this.filedb.getKeyImage();
     
     this.loadProduit();
+    this.initialisation();
   }
   
   handlerFileInput(file: FileList){
@@ -105,6 +109,13 @@ export class LoginComponent implements OnInit {
   
    
     
+  }
+  initialisation(){
+    this.claservice.getAllClasses().subscribe(
+      data => {this.listesClasses = data},
+      error => {console.log('Une erreur s est produite')}
+      
+    );
   }
   
   
