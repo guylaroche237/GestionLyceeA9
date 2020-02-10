@@ -57,12 +57,6 @@ export class LoginComponent implements OnInit {
    var p = val;
    
    p.photo = this.cleimg;
-   //this.user.adresse = val.adresse;
-   //this.user.email = val.email;
-   //this.user.keyimg = this.keyimg;
-   //this.user.password = val.password;
-   //this.user.sale = val.sale;
-   
     val.keyimg = this.cleimg;
     console.log(val);
    this.filedb.savePhoto(this.fileToUpload,this.cleimg).subscribe(
@@ -75,11 +69,7 @@ export class LoginComponent implements OnInit {
     res =>{
       this.loadProduit();
     }
-  )
-   
-   
-  
- 
+  );
 
   }
 
