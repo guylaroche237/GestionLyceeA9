@@ -4,6 +4,7 @@ import { Classes } from '../classes/classes';
 import { from } from 'rxjs';
 import { Router } from '@angular/router';
 import { ParametreService } from '../shared_services/parametre.service';
+import { Matiere } from '../classes/matiere';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,11 @@ import { ParametreService } from '../shared_services/parametre.service';
 export class NavbarComponent implements OnInit {
   //private listesClasses :string[] = ['6eme','5eme','4eme','3eme','2nd','1ere','Tle'];
   private listesClasses :Classes[];
+  private etat:boolean=false;
+  private cpt:boolean=false;
+  private ens:boolean=false;
+  private for:boolean=false;
+  private bib:boolean=false;
   
   
   constructor(private claservice:ClassesService,private router:Router,private Param:ParametreService) { }
@@ -20,7 +26,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.initialisation();
   }
+  on(){
+    this.etat = !this.etat;
 
+  }
+  onCompte(){ this.cpt = ! this.cpt;}
+  onEns(){this.ens = !this.ens;}
+  onForum(){this.for= ! this.for;}
+  onBiblio(){this.bib = !this.bib;}
   
   initialisation(){
     this.claservice.getAllClasses().subscribe(
@@ -34,6 +47,7 @@ export class NavbarComponent implements OnInit {
     this.Param.setName_classe(val);
 
   }
+  
 
 
 }

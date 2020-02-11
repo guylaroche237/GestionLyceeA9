@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ParametreService } from 'src/app/shared_services/parametre.service';
+import { Matiere} from '../../classes/matiere';
+import { from } from 'rxjs';
+import { MatiereService } from 'src/app/shared_services/matiere.service';
 
 @Component({
   selector: 'app-matiere',
@@ -8,16 +11,26 @@ import { ParametreService } from 'src/app/shared_services/parametre.service';
 })
 export class MatiereComponent implements OnInit {
   private sale:string;
+  matieres :Matiere [];
+  tab:any;
 
 
-  constructor(private param:ParametreService) { }
+  constructor(private param:ParametreService,private service_mat:MatiereService) { }
 
   ngOnInit() {
-    
     setInterval(()=>{
-      this.sale = this.param.getName_classe();
-      
-    },4000)
+      this.sale = this.param.getName_classe();  
+      this.updateMatiere(this.sale);
+    },2000);    
   }
+  updateMatiere(code:string){
+    this.service_mat.getMatiereByClasse(code).subscribe(
+      data => { this.matieres = data},
+      error => {console.log('Une erreur s est produite')},
+       () => { console.log('chargement des produits effectuer')}
+
+  );
+  }
+  //this.matieres = this.service_mat.getMatiereByClasse(this.sale);
 
 }

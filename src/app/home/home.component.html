@@ -40,11 +40,16 @@
             <div class="col-lg-9 col-xs-9 col-md-9 col-sm-9">
               <div class="row">
                  <div>
-                   <h3>Hello / Salut Monsieur </h3>
+                   <h3>Hello / Salut {{user.nom}} {{user.login}} </h3>
                    <img/>
                  </div>
               </div>
-              <router-outlet name="contentOutlet"></router-outlet>
+
+              
+              <div>
+                <router-outlet name="contentOutlet"></router-outlet>
+              </div>
+              
             </div>
           </div>
         </div>

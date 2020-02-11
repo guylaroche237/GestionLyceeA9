@@ -25,16 +25,17 @@
 
 .point a {
     display: block;
-    color: blue;
-    background-color: gold;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
     padding-left: 30px;
-    text-decoration: none;
+    
     border-radius: 1px solid red;
     margin: 5px;
 }
 
 .point a:hover{
-    color:blue;
+    color:white;
     text-decoration: red;
-    background-color: white;
+    background-color: blue;
 }

@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FileService } from './shared_services/file.service';
 import { ClassesService } from './shared_services/classes.service';
 import { ParametreService } from './shared_services/parametre.service';
+import { MatiereService } from './shared_services/matiere.service';
 
 
 
@@ -22,6 +23,7 @@ import { MaterialModule } from './material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatiereComponent } from './composant/matiere/matiere.component';
 import { EnseignantComponent } from './composant/enseignant/enseignant.component';
+import { CompteComponent } from './composant/compte/compte.component';
 
 
 
@@ -34,7 +36,8 @@ import { EnseignantComponent } from './composant/enseignant/enseignant.component
     FooterComponent,
     NavbarComponent,
     MatiereComponent,
-    EnseignantComponent
+    EnseignantComponent,
+    CompteComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { EnseignantComponent } from './composant/enseignant/enseignant.component
     
   ],
   
-  providers: [AppService,FileService,ClassesService,ParametreService],
+  providers: [AppService,FileService,ClassesService,ParametreService,MatiereService],
     
   bootstrap: [AppComponent]
 })

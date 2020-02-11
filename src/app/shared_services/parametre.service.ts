@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Matiere} from '../classes/matiere';
+
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +8,8 @@ import { Injectable } from '@angular/core';
 export class ParametreService {
 
   public name_classe:string;
+  matieres :Matiere [];
+  idUser:Number;
 
   constructor() { }
 
@@ -13,7 +17,15 @@ export class ParametreService {
    this.name_classe = name;
 
   }
+  setIdUser(id:Number){
+     this.idUser = id;
+  }
+  getIdUser(){
+    return this.idUser;
+  }
   getName_classe(){
     return this.name_classe;
   }
+
+  
 }

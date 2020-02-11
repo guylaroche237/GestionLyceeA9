@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 import { Student } from '../classes/student';
 import { User } from '../classes/user';
 import { Router } from '@angular/router';
+import { ParametreService } from './parametre.service';
 
 @Injectable()
 export class FileService {
-  constructor(private http: HttpClient,private router: Router) { }
+  constructor(private http: HttpClient,private router: Router,private param:ParametreService) { }
 
   private baseUrl:string = "http://localhost:8000/api";
   private path :string= "http://localhost:8080/api/student";
@@ -38,6 +39,9 @@ export class FileService {
   getStudentByLoginAndPassword(login:string,password:string):Observable<any>{
     return this.http.get(this.baseUrl+'/student/'+login+'/'+password);
   }
+  getStudentById(id:Number):Observable<any>{
+    return this.http.get(this.baseUrl+'/student/'+id);
+  }
 
   getKeyImage(){
     const chars = '0123456789abcdefghijklmnopkwxzjAZERTYUIOPMLKJHGFDSQWXCVBN';
@@ -51,6 +55,8 @@ export class FileService {
   Authentification(user:User){
     if(user){
       //Connection effectuer avec Succes
+      this.param.setIdUser(user.id);
+      
       this.router.navigateByUrl("/home");
     }else{
       //login ou password Erroner

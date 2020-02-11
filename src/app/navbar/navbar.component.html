@@ -4,31 +4,44 @@
            <h5>Menu Page</h5>
            <hr>
 
-           <p class="chapitre">Program / Matieres <span class="pull-right"><i class="fa fa-book"></i></span> </p>
-           <div class="point" *ngFor="let elt of listesClasses">
-             <a  [routerLink]="[{outlets: {contentOutlet: 'matiere' }} ]" data-name="{{elt.nom}}" (click)="sendName(elt.nom)"><h5>{{elt.nom}}</h5></a>
+          
+          
+
+           <p class="chapitre" (click)="onCompte()">Mon Compte<span class="pull-right"><i class="fa fa-user-o"></i></span></p>
+           <div class="point" *ngIf="cpt">
+             <a  [routerLink]="[{outlets: {contentOutlet: 'compte' }} ]" >Composition</a>
+             <a href="#">Sanctions</a>
              
            </div>
 
-           <p class="chapitre"> Chapitre 2 <span class="pull-right"><i class="fa fa-car"></i></span></p>
-           <div class="point" style="display: none;">
-             <a href="#">Point 1</a>
-             <a href="#">Point 2</a>
-             <a href="#">Point 3</a>
+           <p class="chapitre" (click)="onEns()">Enseignants<span class="pull-right"><i class="fa fa-graduation-cap"></i></span></p>
+           <div class="point" *ngIf="ens">
+             <a  [routerLink]="[{outlets: {contentOutlet: 'enseignant' }} ]" >Tous</a>
+             
            </div>
 
-           <p class="chapitre"> Chapitre 3 <span class="pull-right"><i class="fa fa-book"></i></span></p>
-           <div class="point" style="display: none;">
-             <a href="#">Point 1</a>
-             <a href="#">Point 2</a>
-             <a href="#">Point 3</a>
+           <p class="chapitre" (click)="onForum()">Forum<span class="pull-right"><i class="fa fa-comments-o"></i></span></p>
+           <div class="point" *ngIf="for">
+             <a href="#">Tchat</a>
+             <a href="#">Publication</a>
+             
            </div>
 
-           <p class="chapitre"> Chapitre 4 <span class="pull-right"><i class="fa fa-play"></i></span></p>
-           <div class="point" style="display: none;">
-             <a href="#">Point 1</a>
-             <a href="#">Point 2</a>
-             <a href="#">Point 3</a>
+           <p class="chapitre" (click)="onBiblio()">Bibliotheque<span class="pull-right"><i class="fa fa-university"></i></span></p>
+           <div class="point" *ngIf="bib">
+             <a href="#">Scientifique</a>
+             <a href="#">Literaire</a>
+             <a href="#">Roman</a>
+             <a href="#">Langue</a>
+             
+           </div>
+
+           <p class="chapitre" (click)="on()">Program / Matieres <span class="pull-right"><i class="fa fa-book"></i></span> </p>
+           <div *ngIf="etat">
+            <div class="point" *ngFor="let elt of listesClasses">
+              <a  [routerLink]="[{outlets: {contentOutlet: 'matiere' }} ]" data-name="{{elt.nom}}" (click)="sendName(elt.nom)" routerLinkActive="active"><h5>{{elt.nom}}</h5></a>
+              
+            </div>
            </div>
 
          </div>
