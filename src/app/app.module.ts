@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FileService } from './shared_services/file.service';
 import { ClassesService } from './shared_services/classes.service';
 import { ParametreService } from './shared_services/parametre.service';
 import { MatiereService } from './shared_services/matiere.service';
+import { ForumService } from './shared_services/forum.service';
 
 
 
@@ -24,6 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatiereComponent } from './composant/matiere/matiere.component';
 import { EnseignantComponent } from './composant/enseignant/enseignant.component';
 import { CompteComponent } from './composant/compte/compte.component';
+import { TchatComponent } from './composant/tchat/tchat.component';
 
 
 
@@ -37,19 +39,21 @@ import { CompteComponent } from './composant/compte/compte.component';
     NavbarComponent,
     MatiereComponent,
     EnseignantComponent,
-    CompteComponent
+    CompteComponent,
+    TchatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule
     
   ],
   
-  providers: [AppService,FileService,ClassesService,ParametreService,MatiereService],
+  providers: [AppService,FileService,ClassesService,ParametreService,MatiereService,ForumService],
     
   bootstrap: [AppComponent]
 })

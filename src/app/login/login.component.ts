@@ -82,8 +82,6 @@ export class LoginComponent implements OnInit {
   }
 
   addUser(donner){
-
-    
      this.filedb.getStudentByLoginAndPassword(donner.login,donner.password).subscribe(
       data => {
         this.user = data,
@@ -95,11 +93,9 @@ export class LoginComponent implements OnInit {
       error => {console.log("utilisateur non trouver")},
       () => {}
       
-    );
-  
-   
-    
+    ); 
   }
+
   initialisation(){
     this.claservice.getAllClasses().subscribe(
       data => {this.listesClasses = data},

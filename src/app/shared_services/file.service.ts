@@ -57,7 +57,7 @@ export class FileService {
       //Connection effectuer avec Succes
       this.param.setIdUser(user.id);
       
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/home/(contentOutlet:tchat)");
     }else{
       //login ou password Erroner
       this.router.navigateByUrl("/login");

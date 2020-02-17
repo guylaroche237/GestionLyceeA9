@@ -1,5 +1,5 @@
 
-      <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+      <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3 d-none d-sm-block d-sm-none d-md-block">
          <div class="menu">
            <h5>Menu Page</h5>
            <hr>
@@ -22,7 +22,7 @@
 
            <p class="chapitre" (click)="onForum()">Forum<span class="pull-right"><i class="fa fa-comments-o"></i></span></p>
            <div class="point" *ngIf="for">
-             <a href="#">Tchat</a>
+             <a [routerLink]="[{outlets: {contentOutlet: 'tchat' }} ]" >Tchat</a>
              <a href="#">Publication</a>
              
            </div>

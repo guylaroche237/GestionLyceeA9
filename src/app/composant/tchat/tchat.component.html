@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="row" id="header">
+        <div>
+            <h3>Bienvenue Au Forum Du Lycee </h3>
+        </div>
+    </div>
+</div>
+
+<div class="container-sms">
+  <div class="msg-header">
+    <div class="msg-header-img">
+      <img src="../../../assets/images/joel.jpg"/>
+    </div>
+    <div class="active">
+      <h4>Guy Laroc..</h4>
+      <h6>3 hours ago...</h6>
+    </div>
+    <div class="header-icons">
+      <i class="fa fa-phone"></i>
+      <i class="fa fa-video-camera"></i>
+      <i class="fa fa-info-circle"></i>
+    </div>
+  </div>
+
+  <div class="chat-page">
+    <div class="msg-inbox">
+      <div class="chats">
+        <div class="msg-page">
+
+          <div *ngFor="let sms of messages" [ngClass]="(id==sms.student.id)?'received-chats':'outgoing-chats'">
+            <div *ngIf="id==sms.student.id">
+                  
+              <div class="received-chats-img">
+                <img src="../../../assets/images/mere.jpg">
+              </div>
+
+              <div class="received-msg">
+                <div class="received-msg-inbox">
+                  <p>{{sms.message}}</p>
+                  <span class="time">{{sms.date | date:'d/M/y'}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="id != sms.student.id">
+                
+              <div class="outgoing-chats-msg">   
+                <p>{{sms.message}}</p>
+                <span class="time">{{sms.date | date:'d/M/y'}}</span>
+              
+            </div>
+            <div class="outgoing-chats-img">
+              <img src="../../../assets/images/famille.jpg">
+            </div>
+
+            </div>
+            
+
+            
+          </div>
+
+
+         
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="msg-bottom">
+      <div class="bottom-icons">
+        <i class="fa fa-plus-circle"></i>
+        <i class="fa fa-camera"></i>
+        <i class="fa fa-microphone"></i>
+        <i class="fa fa-smile-o"></i>
+      </div>
+      <form #smsForm = "ngForm">
+        <div class="input-group" >
+          <input type="text" class="form-control" name="sms" [(ngModel)]="sms"  placeholder="write message..">
+          <div class="input-group-append">
+
+              <span class="input-group-text" (click)="saveMessage(smsForm.value)">
+                <i class="fa fa-paper-plane"></i>
+              </span>
+             
+          </div>
+        </div>
+      </form>
+      
+    </div>
+
+   
+
+  </div>
+
+</div>
+<div class="alert" *ngIf="valide">
+  <p>Message Required !!</p>
+  <button class="btn btn-default form-inline" (click)="fermer()">Close</button>
+</div>
+

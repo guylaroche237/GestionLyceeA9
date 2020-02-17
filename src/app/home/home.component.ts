@@ -17,10 +17,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.param.getIdUser();
-    this.getStudentById(this.id);
+    if(this.id){
+      this.getStudentById(this.id);
+    }else{
+      this.user = {"nom":"inconnu","login":"inconnu"};
+    }
     
-
     
+  }
+  arret(){
+    this.route.navigateByUrl("/login");
   }
 
   getStudentById(k:Number){

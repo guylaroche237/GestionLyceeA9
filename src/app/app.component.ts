@@ -16,7 +16,7 @@ export class AppComponent {
     if(!this.appservice.authentification()){
       this.route.navigateByUrl('/login');
     }else{
-      this.route.navigateByUrl('/home');
+      this.route.navigateByUrl('/home/(contentOutlet:tchat)');
     }
 
   }

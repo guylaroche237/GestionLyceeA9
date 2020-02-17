@@ -6,6 +6,7 @@ import { from } from 'rxjs';
 import { MatiereComponent } from './composant/matiere/matiere.component';
 import { EnseignantComponent } from './composant/enseignant/enseignant.component';
 import { CompteComponent } from './composant/compte/compte.component';
+import { TchatComponent } from './composant/tchat/tchat.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
    children: [
      {path:'matiere',component:MatiereComponent,outlet:'contentOutlet'},
      {path: 'enseignant',component:EnseignantComponent,outlet:'contentOutlet'},
-     {path: 'compte',component:CompteComponent,outlet:'contentOutlet'}
+     {path: 'compte',component:CompteComponent,outlet:'contentOutlet'},
+     {path: 'tchat',component:TchatComponent,outlet:'contentOutlet'}
    ]
 },
  // {path: 'home/matiere', component: MatiereComponent},
