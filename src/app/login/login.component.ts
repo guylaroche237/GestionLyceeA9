@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   list: Student[];
   cleimg:string;
   private listesClasses :Classes[];
+  erreur:boolean= false;
  
   
 
@@ -85,7 +86,10 @@ export class LoginComponent implements OnInit {
      this.filedb.getStudentByLoginAndPassword(donner.login,donner.password).subscribe(
       data => {
         this.user = data,
-         console.log(this.user),
+        
+        this.erreur = this.filedb.present(this.user),
+        
+         
          this.filedb.Authentification(this.user)
          //if(this.user){console.log(true);}else{console.log(true);}
 

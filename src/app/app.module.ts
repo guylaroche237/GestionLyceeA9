@@ -26,6 +26,7 @@ import { MatiereComponent } from './composant/matiere/matiere.component';
 import { EnseignantComponent } from './composant/enseignant/enseignant.component';
 import { CompteComponent } from './composant/compte/compte.component';
 import { TchatComponent } from './composant/tchat/tchat.component';
+import { PublicationComponent } from './composant/publication/publication.component';
 
 
 
@@ -40,7 +41,8 @@ import { TchatComponent } from './composant/tchat/tchat.component';
     MatiereComponent,
     EnseignantComponent,
     CompteComponent,
-    TchatComponent
+    TchatComponent,
+    PublicationComponent
   ],
   imports: [
     BrowserModule,

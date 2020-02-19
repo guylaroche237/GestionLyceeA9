@@ -16,14 +16,14 @@
 
            <p class="chapitre" (click)="onEns()">Enseignants<span class="pull-right"><i class="fa fa-graduation-cap"></i></span></p>
            <div class="point" *ngIf="ens">
-             <a  [routerLink]="[{outlets: {contentOutlet: 'enseignant' }} ]" >Tous</a>
+             <a  [routerLink]="[{outlets: {contentOutlet: 'enseignant' }} ]">Tous</a>
              
            </div>
 
            <p class="chapitre" (click)="onForum()">Forum<span class="pull-right"><i class="fa fa-comments-o"></i></span></p>
            <div class="point" *ngIf="for">
              <a [routerLink]="[{outlets: {contentOutlet: 'tchat' }} ]" >Tchat</a>
-             <a href="#">Publication</a>
+             <a [routerLink]="[{outlets: {contentOutlet: 'publication' }} ]" >Publication</a>
              
            </div>
 

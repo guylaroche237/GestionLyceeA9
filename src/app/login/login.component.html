@@ -25,6 +25,9 @@
                     </div>
                    
                     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <div class="error" *ngIf="erreur">
+                        <h6>password ou login erroner</h6>
+                    </div>
                     <label for="inputEmail" class="sr-only">Login</label>
                     <input type="text" id="inputEmail" class="form-control" name="login" ngModel placeholder="Login .." required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>

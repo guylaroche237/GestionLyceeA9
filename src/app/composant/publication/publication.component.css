@@ -1,0 +1,71 @@
+#header{
+    background-color: dimgrey;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+#block{
+    max-width: 600 !important;
+    margin: auto;
+    margin-top: 4%;
+    font-family: sans-serif;
+    letter-spacing: 0.5px;
+    border: 1px solid black;
+    
+}
+.publication{
+    max-width: 100%;
+    margin: 10px;
+    margin-top: 4%;
+    padding: 10px;
+    letter-spacing: 0.5px;
+    border: 1px solid black;
+    
+
+}
+.publication-header{
+    background-color: darkgray;
+}
+
+.publication-header-img{
+  width: 70px;
+  
+  padding: 10px;
+  float: left;
+}
+.publication-header-img img{
+    width: 100%;
+    border-radius: 50%;
+}
+.title{
+   padding: 10px;
+}
+.title h4{
+    font-size: 20px;
+    margin-left: 10px;
+    color: #fff;
+  }
+  .title h6{
+    font-size: 10px;
+    margin-left: 10px;
+    line-height: 2px ;
+    color: #fff;
+  
+  }
+  .publication-body{
+      max-width: 100%;
+  }
+  .publication-body img{
+      width: 100%;
+  }
+  .publication-footer{
+      padding: 5px;
+      background-color:azure;
+  }
+  .publication-footer button{
+      margin: 1px;
+      
+  }

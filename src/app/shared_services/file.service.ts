@@ -64,5 +64,12 @@ export class FileService {
     }
     
   }
+  present(user:User){
+    if(user){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
 }
