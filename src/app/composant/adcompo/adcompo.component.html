@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <div class="row" id="header">
+        <div>
+            <h3>GERER LES NOTES DES ETUDIANTS</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-lg-9">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th><th>    Date</th><th>Mention</th><th>Note</th><th>SEQUENCE</th><th>Matiere</th><th>Etudiant</th><th><button  (click)="operation='add'" class="btn btn-outline-primary">ADD</button></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let compo of tab_compo">
+              <td>{{compo.id}}</td><td> <button class="btn btn-sm btn-primary">{{compo.date | date:'dd-MM-yy' }}</button></td><td>{{compo.mention}}</td><td>{{compo.note}}</td><td>{{compo.sequence}}</td><td>{{compo.matiere.title}}</td><td>{{compo.student.nom}}</td>
+              <td>
+                 <!-- <button class="btn btn-sm btn-outline-primary" (click)="operation='edite' ; selectectCompo = compo ;updateCompo();">EDITE</button> -->
+                  <button class="btn btn-sm btn-outline-danger" (click)="operation ='remove'; selectectCompo = compo ; del= true; ">REMOVE</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-lg-3" id="registre">
+        <div class="card" >
+          <div class="card-header bg-info text-white">
+                <h5>AJOUT D'UNE COMPOSITION D'UN ETUDIANT</h5>
+          </div>
+          <div class="card-body">
+            <div *ngIf="operation == 'add' || operation == 'edite' ">
+              <form  #f="ngForm" (ngSubmit)="saveCompo(f.value)" >
+                <div class="form-group">
+                  <label>NOTE:</label>
+                 <input type="number" class="form-control" name="note" ngModel [(ngModel)]="note" >
+                 <!-- <select class="form-control" name="titre" ngModel  [(ngModel)]="titre" >
+                    <option *ngFor="let elt of titres">{{elt}}</option>
+                </select> -->
+                </div>
+
+                <div class="form-group">
+                  <label>Classe :</label>
+                 <!-- <input type="text" class="form-control" name="cl" [(ngModel)]="cl" >-->
+                  <select class="form-control" name="clas" ngModel  [(ngModel)]="clas" (change)="findStudentByClasse(clas);findMatiereByClasse(clas);" >
+                    <option *ngFor="let cls of listesClasses">{{cls.nom}}</option>
+                 </select>
+                </div>
+               
+
+                <div class="form-group">
+                  <label>Sequence:</label>
+                    <!--<input type="text" class="form-control" name="name" [(ngModel)]="name" >-->
+                  <select class="form-control" name="seq" ngModel  [(ngModel)]="seq" >
+                    <option *ngFor="let s of ['Premiere','Deuxieme','Troisieme','Quatrieme','Cinquieme','Sixieme']">{{s}}</option>
+                 </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Matiere :</label>
+                 <!-- <input type="text" class="form-control" name="cl" [(ngModel)]="cl" >-->
+                  <select class="form-control" name="mat" ngModel  [(ngModel)]="mat" >
+                    <option value="">Choisir la Matiere</option>
+                    <option *ngFor="let cls of matieres">{{cls.title}}</option>
+                 </select>
+                </div>
+
+                
+
+
+                  <div class="form-group">
+                    <label>Student:</label>
+                   <!-- <input type="text" class="form-control" name="cl" [(ngModel)]="cl" >-->
+                    <select class="form-control" name="stu" ngModel  [(ngModel)]="stu" >
+                        <option value="">Choisir l'etudiant</option>
+                        <option *ngFor="let elt of etudiants">{{elt.nom}}</option>
+                   </select>
+                  </div>
+
+                  <div class="alert" *ngIf="!note || !seq || !mat || !clas || !stu">
+                    <small>Remplir tous les champ</small> 
+                 </div>
+
+                <button [disabled]="(!note)||(!seq)||(!mat)||(!clas)||(!stu)" class="btn btn-primary" type="submit">
+                  AJOUTER
+                </button>
+
+                
+
+              </form>
+            </div>
+
+            <div *ngIf="operation == 'remove' ">
+              <p class="card-title">
+                <small> Compo_Id : {{ selectectCompo.id }}</small> <br>
+                <small>  Compo_Matiere_title: {{selectectCompo.matiere.title}} </small>     
+              </p>
+              <p> Voulez vous suprimer cette l'Element ? </p>
+              <div class="alert alert-danger" *ngIf="del == false">
+                  Vous avez suprimer le produit avec success
+              </div>
+              <button class="btn btn-danger" (click)="deleteCompo(selectectCompo.id); del= false;">Comfirmer</button>
+              <button class="btn btn-primary" (click)="operation= '';">Annuler</button>
+            </div>
+
+          </div>
+
+          <div class="card-footer">
+
+          </div>
+        </div>
+        <app-share></app-share>
+      </div>
+   </div>
+</div>
+
+

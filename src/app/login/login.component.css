@@ -70,7 +70,22 @@ input{
 }
 .error{
   background-color: red;
-  color: white;
   margin: 10px;
   padding: 10px;
+  border-radius: 12px;
+}
+.success{
+  background-color: blue;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+.success h6,.error h6{
+  font-size: 10px;
+  margin-left: 10px;
+  line-height: 2px ;
+  color: #fff;
+}
+.img_error{
+  color: red;
 }

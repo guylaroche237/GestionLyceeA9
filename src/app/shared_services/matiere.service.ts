@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MatiereService {
   private baseUrl:string = "http://localhost:8000/api/matiere";
+  private obj:any;
 
   constructor(private param:ParametreService,private http:HttpClient) {
 
@@ -17,6 +18,18 @@ export class MatiereService {
 
    getMatiereByClasse(cls:string): Observable<any>{
     return this.http.get(this.baseUrl+'/'+cls);
+  }
+
+  getAllMatieres(): Observable<any>{
+    return this.http.get(this.baseUrl+'/all');
+  }
+
+  deleteMatiere(idm:number): Observable<any>{
+    return this.http.delete(this.baseUrl+'/delete/'+idm);
+  }
+
+  saveMatiere(title:string,nom:string,classes:string): Observable<any>{
+    return this.http.post(this.baseUrl+'/save/'+title+'/'+nom+'/'+classes,this.obj);
   }
 
 

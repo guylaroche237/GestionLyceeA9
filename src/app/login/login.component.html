@@ -28,10 +28,13 @@
                     <div class="error" *ngIf="erreur">
                         <h6>password ou login erroner</h6>
                     </div>
+                    <div class="success" *ngIf="sucess">
+                        <h6>Compte Cree avec Success!!</h6>
+                    </div>
                     <label for="inputEmail" class="sr-only">Login</label>
-                    <input type="text" id="inputEmail" class="form-control" name="login" ngModel placeholder="Login .." required autofocus>
+                    <input type="text" id="inputEmail" class="form-control" name="login" [(ngModel)]="login" placeholder="Login .." required autofocus>
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" name="password" ngModel placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control" name="password" [(ngModel)]="password" placeholder="Password" required>
                     <div class="checkbox mb-3">
                       <label>
                         <input type="checkbox" value="remember-me"> Remember me
@@ -49,6 +52,7 @@
                         <div class="" id="prev">
                             <img class="mb-4 profil" id="prev" [src]="imageurl"   alt="" width="185" height="185">
                         </div>
+                        <div class="img_error" *ngIf="taille_img >= 1048576"><p>Changez l'image taille superieur a 1Mo</p></div>
                         <div class="form-group ">
                             <div class="custom-file">
                                 <input type="file" #Image accept="image/*" name="keyimg" ngModel (change)="handlerFileInput($event.target.files)" class="custom-file-input" id="inputGroupFile01"/>
@@ -57,6 +61,7 @@
                             
                             
                         </div>
+                       
                        
     
                         <div class="form-group decal">
@@ -113,7 +118,7 @@
                         </div>
     
                         <div class="form-group decal">
-                            <button type="submit" [disabled]="Image.value=='' || !imageForm.valid" class="btn btn-primary btn-lg" 
+                            <button type="submit" [disabled]="Image.value=='' || !imageForm.valid || (taille_img>=1048576)" class="btn btn-primary btn-lg" 
                                 >Save</button>
                             <button class="btn btn-danger btn-lg">Cancel</button>
     
@@ -124,6 +129,7 @@
     
                 </div>
             </div>
+           
         
        
     </div>

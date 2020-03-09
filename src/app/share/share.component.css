@@ -1,0 +1,11 @@
+.share{
+    background-color: black;
+    margin: 4px;
+    color: white;
+    padding: 3%;
+    font-family: fantasy;
+    font-size: xx-small;
+}
+button{
+    margin: 1px;
+}

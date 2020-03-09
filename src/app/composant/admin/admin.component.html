@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div id="menu">
+        <!--<nav class="row nav">
+            <li class="active"><a [routerLink]="[{outlets: {adminOutlet: 'adens' }} ]">Admin_Enseignants</a></li>
+            <li><a [routerLink]="[{outlets: {adminOutlet: 'admatiere' }} ]">Admin_Matieres</a></li>
+            <li><a [routerLink]="[{outlets: {adminOutlet: 'adcompo' }} ]">Admin_Compositions</a></li>
+        </nav>-->
+        
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">ADMINISTRATION</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="active"><a [routerLink]="[{outlets: {adminOutlet: 'adens' }} ]">Admin_Enseignants</a></li>
+                <li><a [routerLink]="[{outlets: {adminOutlet: 'admatiere' }} ]">Admin_Matieres</a></li>
+                <li><a [routerLink]="[{outlets: {adminOutlet: 'adcompo' }} ]">Admin_Compositions</a></li>
+              </ul>
+              
+            </div>
+            <button class="btn btn-sm btn-danger" (click)="logOut()">Deconnecter</button>
+          </nav>
+
+    </div>
+
+  
+
+    <div class="col-lg-12 vue">
+        <router-outlet name="adminOutlet"></router-outlet>
+    </div>
+    <app-footer></app-footer>
+</div>
+
+
+    

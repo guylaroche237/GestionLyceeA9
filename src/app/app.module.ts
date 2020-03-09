@@ -8,6 +8,7 @@ import { ClassesService } from './shared_services/classes.service';
 import { ParametreService } from './shared_services/parametre.service';
 import { MatiereService } from './shared_services/matiere.service';
 import { ForumService } from './shared_services/forum.service';
+import { AdminService } from './shared_services/admin.service';
 
 
 
@@ -27,6 +28,11 @@ import { EnseignantComponent } from './composant/enseignant/enseignant.component
 import { CompteComponent } from './composant/compte/compte.component';
 import { TchatComponent } from './composant/tchat/tchat.component';
 import { PublicationComponent } from './composant/publication/publication.component';
+import { AdminComponent } from './composant/admin/admin.component';
+import { AdmatiereComponent } from './composant/admatiere/admatiere.component';
+import { AdcompoComponent } from './composant/adcompo/adcompo.component';
+import { AdensgComponent } from './composant/adensg/adensg.component';
+import { ShareComponent } from './share/share.component';
 
 
 
@@ -42,7 +48,12 @@ import { PublicationComponent } from './composant/publication/publication.compon
     EnseignantComponent,
     CompteComponent,
     TchatComponent,
-    PublicationComponent
+    PublicationComponent,
+    AdminComponent,
+    AdmatiereComponent,
+    AdcompoComponent,
+    AdensgComponent,
+    ShareComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +66,7 @@ import { PublicationComponent } from './composant/publication/publication.compon
     
   ],
   
-  providers: [AppService,FileService,ClassesService,ParametreService,MatiereService,ForumService],
+  providers: [AppService,FileService,ClassesService,ParametreService,MatiereService,ForumService,AdminService],
     
   bootstrap: [AppComponent]
 })

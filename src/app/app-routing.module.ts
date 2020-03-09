@@ -8,6 +8,10 @@ import { EnseignantComponent } from './composant/enseignant/enseignant.component
 import { CompteComponent } from './composant/compte/compte.component';
 import { TchatComponent } from './composant/tchat/tchat.component';
 import { PublicationComponent } from './composant/publication/publication.component';
+import { AdminComponent } from './composant/admin/admin.component';
+import { AdensgComponent } from './composant/adensg/adensg.component';
+import { AdcompoComponent } from './composant/adcompo/adcompo.component';
+import { AdmatiereComponent } from './composant/admatiere/admatiere.component';
 
 
 const routes: Routes = [
@@ -22,7 +26,16 @@ const routes: Routes = [
    ]
 },
  // {path: 'home/matiere', component: MatiereComponent},
-  {path: '', redirectTo: '/login',pathMatch: 'full'}
+  {path: '', redirectTo: '/login',pathMatch: 'full'},
+  {path:'admin',component: AdminComponent,
+   children: [
+    {path:'adens', component: AdensgComponent,outlet:'adminOutlet'},
+    {path:'admatiere', component: AdmatiereComponent,outlet:'adminOutlet'},
+    {path:'adcompo', component: AdcompoComponent,outlet:'adminOutlet'}
+
+   ]
+}
+  
 ];
 
 @NgModule({

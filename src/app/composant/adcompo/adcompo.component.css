@@ -1,0 +1,22 @@
+#header{
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+.alert{
+    background-color: azure;
+    color: red;
+    padding: 10px;
+    margin: 10px;
+}
+.card-body{
+    background-color: black;
+    color: white;
+}
+#registre{
+    margin-top: 5%;
+}

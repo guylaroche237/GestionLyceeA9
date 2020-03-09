@@ -7,8 +7,11 @@ import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { ParametreService } from './parametre.service';
 
+
 @Injectable()
 export class FileService {
+  private speudo:string;
+  private pass:string;
   constructor(private http: HttpClient,private router: Router,private param:ParametreService) { }
 
   private baseUrl:string = "http://localhost:8000/api";
@@ -27,6 +30,13 @@ export class FileService {
    formdata.append('file', pho); 
     return  this.http.post(this.baseUrl+'/profil/save/'+kimg,formdata);
       
+    }
+    getPhoto(cle:number): Observable<any>{
+      return this.http.get(this.baseUrl+'/profil/get/'+cle);
+    }
+
+    getImage(cle:string): Observable<any>{
+      return this.http.get(this.baseUrl+'/profil/get/cle/'+cle);
     }
     
   getAllStudent(): Observable<any>{
@@ -53,11 +63,19 @@ export class FileService {
     return result;
   }
   Authentification(user:User){
+    
     if(user){
       //Connection effectuer avec Succes
       this.param.setIdUser(user.id);
+     // console.log(user);
+      if(user.login == 'admin' || user.fname == 'admin'){
+        this.router.navigateByUrl("/admin/(adminOutlet:adens)");
+      }else{
+        
+        this.router.navigateByUrl("/home/(contentOutlet:tchat)");
+      }
       
-      this.router.navigateByUrl("/home/(contentOutlet:tchat)");
+     
     }else{
       //login ou password Erroner
       this.router.navigateByUrl("/login");

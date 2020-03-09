@@ -1,0 +1,79 @@
+<!--<div class="container-fluide">
+    <div class="row" id="header">
+        <div>
+            <h3>LISTES DES ENSEIGNANTS DU LYCEE </h3>
+        </div>
+    </div>
+</div>-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+           <div class="row">
+            <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,0,9,8,3]" class="col-lg-4">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" src="../assets/images/work.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text">
+                        <strong>Name:</strong> <label>Kamga jule</label><br>
+                        <strong>Telephone:</strong> <label>679045</label><br>
+                        <strong>Email:</strong> <label> guylaroche@gmail.com</label>
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary"><span>23</span><i class="fa fa-thumbs-o-up"></i></button>
+                        <button type="button" class="btn btn-sm btn-danger"><span>23</span><i class="fa fa-thumbs-o-down"></i></button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+            <div id="tete">
+                
+            </div>
+            <div id="form">
+                <p> New Teacher</p>
+               
+                <form>                
+                        <div class="form-group">
+                            
+                            <input placeholder="Votre Nom" class="form-control" type="text" name="nom" [(ngModel)]="nom">
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <input placeholder="Votre Mail" class="form-control" type="email" name="nom" [(ngModel)]="mail">
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <input placeholder="Phone Number" type="number" class="form-control" name="tel" [(ngModel)]="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="file" (change)="onFileChanged($event)">
+                            <img [src] = "" height="100">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary"  value="upload">SAVE</button>
+                            <button class="btn btn-danger">CANCEL</button>
+                        </div>
+                        <hr/>
+                
+                        
+
+                    
+                    
+                </form>
+            </div>
+           
+            <app-share></app-share>
+        </div>
+    </div>
+</div>
+

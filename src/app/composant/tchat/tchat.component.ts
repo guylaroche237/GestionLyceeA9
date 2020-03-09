@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumService } from 'src/app/shared_services/forum.service';
 import { ParametreService } from 'src/app/shared_services/parametre.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -15,16 +16,20 @@ export class TchatComponent implements OnInit {
   vide:string;
   sms:string;
   valide:boolean = false;
+  retrieveResonse:any;
+  base64Data:any;
+  retrievedImage:any;
+  
   
 
-  constructor(private forum:ForumService,private param:ParametreService) { }
+  constructor(private forum:ForumService,private param:ParametreService,private httpClient:HttpClient) { }
 
   ngOnInit() {
     this.id = this.param.getIdUser();
-
-    setInterval(()=>{
-      this.findAllMessage();
-    },1000); 
+    this.findAllMessage();
+    // setInterval(()=>{ },1000); 
+      
+   
     
   }
 
@@ -55,6 +60,20 @@ export class TchatComponent implements OnInit {
       this.valide = true;
     }
    
+  }
+
+  getImage(key:string) {
+    //Make a call to Sprinf Boot to get the Image Bytes.
+    this.httpClient.get('http://localhost:8000/api/profil/get/cle/' + key)
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.file;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          
+        }
+      );
+      return this.retrievedImage;
   }
   
 

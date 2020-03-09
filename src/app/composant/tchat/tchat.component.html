@@ -31,13 +31,13 @@
             <div *ngIf="id==sms.student.id">
                   
               <div class="received-chats-img">
-                <img src="../../../assets/images/mere.jpg">
+                <img src="../../../assets/images/famille.jpg">
               </div>
 
               <div class="received-msg">
                 <div class="received-msg-inbox">
                   <p>{{sms.message}}</p>
-                  <span class="time">{{sms.date | date:'d/M/y'}}</span>
+                  <span class="time">{{sms.date | date:'dd-MM-yy à h:mm:ss E'}}</span>
                 </div>
               </div>
             </div>
@@ -46,7 +46,7 @@
                 
               <div class="outgoing-chats-msg">   
                 <p>{{sms.message}}</p>
-                <span class="time">{{sms.date | date:'d/M/y'}}</span>
+                <span class="time">{{sms.date | date:'fullDate'}}</span>
               
             </div>
             <div class="outgoing-chats-img">

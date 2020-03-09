@@ -13,10 +13,11 @@ export class AppComponent {
   constructor(private appservice: AppService,private route: Router){}
 
   ngOnInit(){
-    if(this.appservice.authentification()){
+    if(!this.appservice.authentification()){
       this.route.navigateByUrl('/login');
     }else{
       this.route.navigateByUrl('/home/(contentOutlet:publication)');
+    // this.route.navigateByUrl('/admin');
     }
 
   }
