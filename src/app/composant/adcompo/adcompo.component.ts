@@ -18,6 +18,7 @@ export class AdcompoComponent implements OnInit {
   private matieres:any;
   selectectCompo:any;
   del:boolean = false;
+  compo:any;
   
   note;seq;mat;clas;stu;
 
@@ -44,22 +45,18 @@ export class AdcompoComponent implements OnInit {
   }
   
   findStudentByClasse(x){
-    
     this.composervice.getStudentByClasse(x).subscribe(
       data => { this.etudiants = data}
-    );
-    
-    
+    );   
   }
 
   findMatiereByClasse(clas){
-    this.matiereservice.getMatiereByClasse(clas).subscribe(
-      data => {this.matieres = data}
-    );
+   // this.matiereservice.getMatiereByClasse(clas).subscribe( data => {this.matieres = data});
+   this.matiereservice.getMatiereCompo(clas).subscribe(data =>{ this.matieres = data; this.compo = this.matieres.matieres; console.log(this.compo);});
   }
   saveCompo(data){
     console.log(data);
-     this.composervice.saveCompo(data.note,data.seq,data.mat,data.clas,data.stu).subscribe(
+     this.composervice.saveCompo(data.note,data.seq,data.mat,data.clas,data.stu,data.coef).subscribe(
       res => {
         this.findAllCompo();this.restart();
       }

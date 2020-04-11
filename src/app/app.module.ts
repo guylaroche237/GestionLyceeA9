@@ -33,6 +33,15 @@ import { AdmatiereComponent } from './composant/admatiere/admatiere.component';
 import { AdcompoComponent } from './composant/adcompo/adcompo.component';
 import { AdensgComponent } from './composant/adensg/adensg.component';
 import { ShareComponent } from './share/share.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignComponent } from './faux/sign.component';
+import { BulletinComponent } from './bulletin/bulletin.component';
+import { SuperComponent } from './super/super.component';
+import { SuploginComponent } from './suplogin/suplogin.component';
+import { PrincipaleComponent } from './config/principale/principale.component';
+import { MatierecompoComponent } from './config/matierecompo/matierecompo.component';
+import { ListbulletinComponent } from './config/listbulletin/listbulletin.component';
+import { CarnetComponent } from './config/carnet/carnet.component';
 
 
 
@@ -53,7 +62,15 @@ import { ShareComponent } from './share/share.component';
     AdmatiereComponent,
     AdcompoComponent,
     AdensgComponent,
-    ShareComponent
+    ShareComponent,
+    SignComponent,
+    BulletinComponent,
+    SuperComponent,
+    SuploginComponent,
+    PrincipaleComponent,
+    MatierecompoComponent,
+    ListbulletinComponent,
+    CarnetComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +79,8 @@ import { ShareComponent } from './share/share.component';
     
     ReactiveFormsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
     
   ],
   

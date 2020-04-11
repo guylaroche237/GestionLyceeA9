@@ -1,0 +1,65 @@
+#header{
+    background-color: rgb(136, 86, 97);
+    color: white;
+    text-align: center;
+    
+    padding: 30px;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+
+p label{
+    font-size: 10px;
+    margin-left: 10px;
+    line-height: 3px ;
+    color: blue;
+}
+#header{
+    background-color: blue;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin: 10px;
+    
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}
+#form{
+    border: solid green 1px;
+    margin: 2%;
+    padding: 3%;
+}
+#form p{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 4%;
+    font-family: cursive;
+    
+}
+button{
+    margin: 1px;
+}
+.share{
+    background-color: black;
+    margin: 4px;
+    color: white;
+    padding: 3%;
+    font-family: fantasy;
+    font-size: xx-small;
+}
+label{
+    font-size: 13px;
+    font-weight: 15px;
+    color: blue;
+}
+.error{
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: 12px;
+    padding: 10px;
+    
+}

@@ -1,0 +1,135 @@
+<div class="container-fluid">
+    <div class="row" id="header">
+        <div>
+            <h3> GENERER UN BULLETIN</h3> 
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-lg-8">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Matiere</th><th>Coef</th><th>Note</th><th>Total</th><th>Mention</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let compo of allcompo">
+              <td>{{compo.matiere.nom}}</td><td>{{compo.coef}}</td><td>{{compo.note}}</td><td>{{compo.total}}</td><td>{{compo.mention}}</td>      
+            </tr>
+          </tbody>
+        </table>
+        <div class="form-group message" *ngIf="val">
+          <p>Impossible de Creer Le Bulletin Pour Cet Eleve : Matiere Incomplete</p>
+        </div>
+        <div class="form-group message" *ngIf="valeur">
+          <p>Aucune Composition Disponible Pour Cette Eleve</p>
+        </div>
+
+        <div class="form-group">
+          <div>
+            <button class="btn btn-primary" *ngIf="btnetat" (click)="newbulletin()">
+              Creer Le Bulletin
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4" *ngIf="step_one" id="registre">
+        <div class="card" >
+          <div class="card-header bg-info text-white">
+                <h5>Connectez Vous Comme Prof Principale</h5>
+          </div>
+          <div class="card-body">
+            <div>
+              <form  #f="ngForm" (ngSubmit)="saveCompo(f.value)" >
+                
+
+                <div class="form-group">
+                  <label>Selectionez La Classe :</label>
+                  <select class="form-control" name="clas" ngModel  [(ngModel)]="clas"  (change)="findStudentByClasse(clas);findMatiereCompo(clas);" >
+                    <option>Selectionner la classe</option>
+                    <option *ngFor="let cls of classes">{{cls.nom}}</option>
+                 </select>
+                </div>
+               
+
+                <div class="form-group">
+                  <label>Login:</label>
+                    <!--<input type="text" class="form-control" name="name" [(ngModel)]="name" >-->
+                  <input type="text" class="form-control" placeholder="login" name="login" [(ngModel)]="login" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password:</label>
+                      <!--<input type="text" class="form-control" name="name" [(ngModel)]="name" >-->
+                    <input type="password" class="form-control" placeholder="password" name="password" [(ngModel)]="password" />
+                </div>
+
+                  <div class="alert" *ngIf="auth">
+                    <small>Access Refuser</small> 
+                 </div>
+
+                <button [disabled]="(!login)||(!password)" (click)="connection()" class="btn btn-primary" type="submit">
+                  Valider
+                </button>
+              </form>
+            </div>  
+
+          </div>
+
+          <div class="card-footer">
+
+          </div>
+        </div>
+        <app-share></app-share>
+      </div>
+
+      <div class="col-lg-4" *ngIf="step_two" id="registre">
+        <div class="card" >
+          <div class="card-header bg-info text-white">
+                <h5>Salle de Classe: {{clas}}</h5>
+          </div>
+          <div class="card-body">
+            <div >
+              <form  #f="ngForm" (ngSubmit)="saveCompo(f.value)" >
+                
+
+                <div class="form-group">
+                  <label>Selectionez La Sequence :</label>
+                 <!-- <input type="text" class="form-control" name="cl" [(ngModel)]="cl" >-->
+                  <select class="form-control" name="seq" ngModel  [(ngModel)]="seq" >
+                    <option *ngFor="let s of ['Premiere','Deuxieme','Troisieme','Quatrieme','Cinquieme','Sixieme']">{{s}}</option>
+                 </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Selectionez L'Eleve :</label>
+                   <!-- <input type="text" class="form-control" name="cl" [(ngModel)]="cl" >-->
+                    <select class="form-control" name="eleve" ngModel  [(ngModel)]="eleve" (change)="findCompoStudentBySeq(eleve);">
+                      <option *ngFor="let cls of etudiants">{{cls.nom}}</option>
+                   </select>
+                  </div>
+            
+
+                <button [disabled]="(!eleve)||(!seq)" class="btn btn-primary" type="submit">
+                  Generer
+                </button>
+              </form>
+            </div>  
+
+          </div>
+
+          <div class="card-footer">
+
+          </div>
+        </div>
+        <app-share></app-share>
+      </div>
+   </div>
+</div>
+
+

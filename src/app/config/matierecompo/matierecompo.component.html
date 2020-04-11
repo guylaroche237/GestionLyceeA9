@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+           <div class="row">
+               
+            <div *ngFor="let pers of alls" class="col-lg-4">
+                <div class="card mb-4 box-shadow" *ngIf="pers.matieres.length">
+                  <div class="card-header">
+                      <h6>{{pers.classes}}</h6>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">
+                        <strong>Id:</strong> <label>{{pers.id}}</label><br>
+                        <strong>Nbr_Matiere:</strong> <label>{{pers.matieres.length}}</label><br>
+                        <strong>Matieres:</strong> <label>[ {{pers.matieres[0].nom}},......]</label>
+                        
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary"><span>Voir+</span><i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-sm btn-danger"><span>remove</span><i class="fa fa-scissors"></i></button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+            <div id="tete">
+                
+            </div>
+            <div id="form">
+                <p> Config Compos Classe</p>
+               
+                <form #imageForm="ngForm" (ngSubmit)="test(imageForm.value)">                                      
+                        <div class="form-group">
+                            <strong>Choisir La Classe</strong>
+                            <select class="form-control" name="salle" ngModel [(ngModel)]="salle" (change)="control(salle);">
+                                <option value="">Selectionner la classe</option>
+                                <option *ngFor ="let mat of listesClasses">{{mat.nom}}</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>Cocher Les Matieres </strong>
+                            <div class="row">
+                                <div *ngFor="let i of allsunite" class="col-lg-6">
+                                    <input type="checkbox" [name] ="i.nom" [value]="i.nom" ngModel [id]="i.nom">
+                                    <label>{{i.nom}}</label>
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                        <div class="alert" *ngIf="erreur">
+                            <h6>Cette Classe a deja ete Configurer</h6>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="(!salle)||(erreur)" type="submit"  value="upload">SAVE</button>
+                            <button class="btn btn-danger" type="reset" >CANCEL</button>
+                        </div>
+                        <hr/>
+                
+                        
+
+                    
+                    
+                </form>
+            </div>
+           
+            <app-share></app-share>
+        </div>
+    </div>
+</div>
+
+

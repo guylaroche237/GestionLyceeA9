@@ -18,10 +18,10 @@ export class MatiereComponent implements OnInit {
   constructor(private param:ParametreService,private service_mat:MatiereService) { }
 
   ngOnInit() {
-    setInterval(()=>{
+   // setInterval(()=>{ },2000); 
       this.sale = this.param.getName_classe();  
       this.updateMatiere(this.sale);
-    },2000);    
+      
   }
   updateMatiere(code:string){
     this.service_mat.getMatiereByClasse(code).subscribe(

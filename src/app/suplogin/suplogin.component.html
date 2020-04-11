@@ -1,0 +1,29 @@
+
+<div class="container-fluide">
+   <!-- <header class="header">
+      <div><h3>Hello Salut !! Merci de Vous Connectez <i class="fa fa-home"></i></h3></div>
+    </header>-->
+    
+    <div class="form container col-lg-4 col-lg-offset-4 col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+      
+      
+       <div class="">
+                 <form  class="form-signin" name="form">
+                    
+                    
+                     <h2 class="h3">Please sign in</h2>
+                     <div class="error" *ngIf="error">
+                         <h6>password ou login erroner</h6>
+                     </div>
+                     
+                     <label for="inputEmail" class="sr-only">Login</label>
+                     <input type="text" id="inputEmail" [(ngModel)]="login" class="form-control" name="login" placeholder="Login .." required autofocus>
+                     <label for="inputPassword"  class="sr-only">Password</label>
+                     <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" name="password" placeholder="Password" required>
+                    
+                     <button class="btn btn-lg btn-primary btn-block" (click)="connection()" type="submit"><i class="fa fa-unlock"></i>  Sign In</button>
+                     <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+                   </form>
+             </div>
+    </div>
+  </div>

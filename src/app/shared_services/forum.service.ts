@@ -7,6 +7,7 @@ import  { Observable} from 'rxjs';
 })
 export class ForumService {
   private baseUrl:string = "http://localhost:8000/api/sms";
+  obj:any;
 
   constructor(private http:HttpClient) { }
 
@@ -14,7 +15,7 @@ export class ForumService {
     return this.http.get(this.baseUrl+'/all');
 
   }
-  saveSms(sms:String,id:Number,obj:any):Observable<any>{
-   return this.http.post(this.baseUrl+'/save/'+sms+'/'+id,obj);
+  saveSms(sms:String,id:Number):Observable<any>{
+   return this.http.post(this.baseUrl+'/save/'+sms+'/'+id,this.obj);
   }
 }

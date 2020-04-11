@@ -6,12 +6,15 @@ import { Student } from '../classes/student';
 import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { ParametreService } from './parametre.service';
+import { element } from 'protractor';
 
 
 @Injectable()
 export class FileService {
   private speudo:string;
   private pass:string;
+  d:Date;
+  obj:any;
   constructor(private http: HttpClient,private router: Router,private param:ParametreService) { }
 
   private baseUrl:string = "http://localhost:8000/api";
@@ -20,8 +23,28 @@ export class FileService {
 
   
   
-  saveStudent(stu:Student): Observable<any> {
-  return  this.http.post(this.baseUrl+'/save/student',stu);
+  saveStudent(stu:Student,photo:File): Observable<any> {
+    const image = new FormData();
+    image.append('file',photo);
+    
+  return  this.http.post(this.baseUrl+'/save/student/',stu); 
+  }
+
+  saveEleve(photo:File,nom:string,login:string,password:string,email:string,date:Date,sale:string){
+   alert("test test");
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', photo);
+    alert("debut debut");
+    return  this.http.post(this.baseUrl+'/save/eleve'+'/'+nom+'/'+login+'/'+password+'/'+email+'/'+date+'/'+sale,photo, { observe: 'response' }).subscribe(
+      (response)=>{
+        if(response.status === 200){
+          alert("sauvegarder avec success");
+             console.log('sauvegarder avec success');
+        }else{
+          console.log('echouer echouer echouer !!!!');
+        }
+      }
+    );
     
   }
   savePhoto(pho:File,kimg:string): Observable<any> {
@@ -29,7 +52,27 @@ export class FileService {
     
    formdata.append('file', pho); 
     return  this.http.post(this.baseUrl+'/profil/save/'+kimg,formdata);
-      
+        
+    }
+
+    SaveEnseignant(nom:string,tel:number,email:string,matiere:string,photo:File){
+      const formdata: FormData = new FormData();  
+      formdata.append('imageFile', photo); 
+      return this.http.post(this.baseUrl+'/enseignant/save/'+nom+'/'+tel+'/'+email+'/'+matiere,formdata,{ observe: 'response' }).subscribe(
+        (response)=>{
+          if(response.status === 200){
+            alert("tout est ok");
+               console.log('sauvegarder avec success');
+          }else{
+            console.log('echouer echouer echouer !!!!');
+          }
+        }
+      );
+
+    }
+
+    getAllEnseignant(){
+      return this.http.get(this.baseUrl+'/enseignant/all');
     }
     getPhoto(cle:number): Observable<any>{
       return this.http.get(this.baseUrl+'/profil/get/'+cle);
@@ -62,13 +105,14 @@ export class FileService {
     
     return result;
   }
-  Authentification(user:User){
+  Authentification(user:any){
     
     if(user){
       //Connection effectuer avec Succes
       this.param.setIdUser(user.id);
      // console.log(user);
-      if(user.login == 'admin' || user.fname == 'admin'){
+    // alert(user.role);
+      if(user.role == 'admin'){
         this.router.navigateByUrl("/admin/(adminOutlet:adens)");
       }else{
         
@@ -82,12 +126,35 @@ export class FileService {
     }
     
   }
-  present(user:User){
+  present(user:any){
     if(user){
       return false;
     }else{
       return true;
     }
+  }
+
+  savePrincipale(login:string,pass:string,name:string,sale:string){
+    return this.http.post(this.baseUrl+'/principale/save/'+login+'/'+pass+'/'+name+'/'+sale,this.obj);
+  }
+  allPrincipale(){
+    return this.http.get(this.baseUrl+'/principale/all');
+  }
+
+  onSaveStudent(nom:string,login:string,password:string,email:string,classe:string,datexp:Date,photo:File){
+    const uploadImageData = new FormData();
+    uploadImageData.append('imageFile', photo);
+    this.http.post(this.baseUrl+'/save'+'/'+nom+'/'+login+'/'+password+'/'+email+'/'+classe+'/'+datexp,uploadImageData, { observe: 'response' }).subscribe(
+      (response)=>{
+        if(response.status === 200){
+          alert("tout est ok");
+             console.log('sauvegarder avec success');
+        }else{
+          console.log('echouer echouer echouer !!!!');
+        }
+      }
+    );
+
   }
 
 }

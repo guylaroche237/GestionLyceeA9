@@ -1,5 +1,13 @@
 <div class="container">
-    <div class="row">
+    <div class="row" id="header">
+        <div>
+            <h3>Listes De Vos Differentes Matieres </h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" *ngIf="matieres.length >0">
         <div class="col-lg-4" *ngFor="let elt of matieres">
             <div class="card">
                <div class="card-header">
@@ -13,14 +21,18 @@
                       <strong>Nom :</strong> <label>{{elt.nom_matiere}}</label><br/>
                       <strong>Classe : </strong> <label> {{sale}}</label>
                   </div>
-                  <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+                  <button type="button" class="btn btn-lg btn-block btn-primary">Voir Plus</button>
                </div>
             </div>
+        </div>    
+    </div>
+    
+    <div class="row" *ngIf="matieres.length == 0">
+        
+        <div id="noresult">
+            
+            <img src="../../../assets/smiley/yawning-2.png" width="200px" height="150px">
         </div>
-
-       
-       
-       
     </div>
    
 

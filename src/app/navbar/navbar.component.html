@@ -38,8 +38,8 @@
 
            <p class="chapitre" (click)="on()">Program / Matieres <span class="pull-right"><i class="fa fa-book"></i></span> </p>
            <div *ngIf="etat">
-            <div class="point" *ngFor="let elt of listesClasses">
-              <a  [routerLink]="[{outlets: {contentOutlet: 'matiere' }} ]" data-name="{{elt.nom}}" (click)="sendName(elt.nom)" routerLinkActive="active"><h5>{{elt.nom}}</h5></a>
+            <div class="point">
+              <a  [routerLink]="[{outlets: {contentOutlet: 'matiere' }} ]" data-name="{{user_connect.classe}}" (click)="sendName(user_connect.classe)" routerLinkActive="active"><h5>{{user_connect.classe}}</h5></a>
               
             </div>
            </div>

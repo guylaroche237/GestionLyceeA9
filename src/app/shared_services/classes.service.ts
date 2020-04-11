@@ -6,7 +6,7 @@ import { from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ClassesService {
+export class ClassesService{
 
   private baseUrl:string = "http://localhost:8000/api";
 

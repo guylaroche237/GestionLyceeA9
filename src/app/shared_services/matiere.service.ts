@@ -4,12 +4,17 @@ import { Matiere} from '../classes/matiere';
 import { from } from 'rxjs';
 import  { Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MatiereCompo } from '../classes/matierecompo';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatiereService {
   private baseUrl:string = "http://localhost:8000/api/matiere";
+  private base: string =  "http://localhost:8000/api/unite";
+  private basemat: string =  "http://localhost:8000/api/matcp";
+  private basecompo:string = "http://localhost:8000/api/compo";
   private obj:any;
 
   constructor(private param:ParametreService,private http:HttpClient) {
@@ -30,6 +35,28 @@ export class MatiereService {
 
   saveMatiere(title:string,nom:string,classes:string): Observable<any>{
     return this.http.post(this.baseUrl+'/save/'+title+'/'+nom+'/'+classes,this.obj);
+  }
+  getAllUnite(){
+    return this.http.get(this.base+'/all');
+  }
+  getUniteByNom(nom:string){
+    return this.http.get(this.base+'/name/'+nom);
+  }
+  saveMatiereCompo(matcp:MatiereCompo) :Observable<any>{
+    return this.http.post(this.basemat+'/save',matcp);
+  }
+  getAllMatiereCompo(){
+    return this.http.get(this.basemat+'/all');
+  }
+  saveCompoMat(classes:string,liste:string){
+    return this.http.post(this.basemat+'/sauve/'+classes+'/'+liste,this.obj);
+  }
+  getMatiereCompo(classes:string){
+    return this.http.get(this.basemat+'/mat/'+classes);
+  }
+
+  getCompoStudentBySequence(id:number,seq:string){
+    return this.http.get(this.basecompo+'/seq/'+id+'/'+seq);
   }
 
 

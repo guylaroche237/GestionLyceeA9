@@ -18,7 +18,7 @@
 
           <tbody>
             <tr *ngFor="let compo of tab_compo">
-              <td>{{compo.id}}</td><td> <button class="btn btn-sm btn-primary">{{compo.date | date:'dd-MM-yy' }}</button></td><td>{{compo.mention}}</td><td>{{compo.note}}</td><td>{{compo.sequence}}</td><td>{{compo.matiere.title}}</td><td>{{compo.student.nom}}</td>
+              <td>{{compo.id}}</td><td> <button class="btn btn-sm btn-primary">{{compo.date | date:'dd-MM-yy' }}</button></td><td>{{compo.mention}}</td><td>{{compo.note}}</td><td>{{compo.sequence}}</td><td>{{compo.matiere.nom}}</td><td>{{compo.student.nom}}</td>
               <td>
                  <!-- <button class="btn btn-sm btn-outline-primary" (click)="operation='edite' ; selectectCompo = compo ;updateCompo();">EDITE</button> -->
                   <button class="btn btn-sm btn-outline-danger" (click)="operation ='remove'; selectectCompo = compo ; del= true; ">REMOVE</button>
@@ -39,9 +39,14 @@
                 <div class="form-group">
                   <label>NOTE:</label>
                  <input type="number" class="form-control" name="note" ngModel [(ngModel)]="note" >
-                 <!-- <select class="form-control" name="titre" ngModel  [(ngModel)]="titre" >
-                    <option *ngFor="let elt of titres">{{elt}}</option>
-                </select> -->
+                 
+                </div>
+                <div class="form-group">
+                  <label>Coef</label>
+                  <select class="form-control" name="coef" ngModel [(ngModel)]="coef">
+                    <option>choisissez le coeficient</option>
+                    <option *ngFor="let c of [1,2,3,4,5,6,7]">{{c}}</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
@@ -66,7 +71,7 @@
                  <!-- <input type="text" class="form-control" name="cl" [(ngModel)]="cl" >-->
                   <select class="form-control" name="mat" ngModel  [(ngModel)]="mat" >
                     <option value="">Choisir la Matiere</option>
-                    <option *ngFor="let cls of matieres">{{cls.title}}</option>
+                    <option *ngFor="let cls of compo">{{cls.nom}}</option>
                  </select>
                 </div>
 
@@ -86,7 +91,7 @@
                     <small>Remplir tous les champ</small> 
                  </div>
 
-                <button [disabled]="(!note)||(!seq)||(!mat)||(!clas)||(!stu)" class="btn btn-primary" type="submit">
+                <button [disabled]="(!note)||(!seq)||(!mat)||(!clas)||(!stu)||(!coef)" class="btn btn-primary" type="submit">
                   AJOUTER
                 </button>
 

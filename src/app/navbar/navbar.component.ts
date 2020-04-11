@@ -5,6 +5,7 @@ import { from } from 'rxjs';
 import { Router } from '@angular/router';
 import { ParametreService } from '../shared_services/parametre.service';
 import { Matiere } from '../classes/matiere';
+import { FileService } from '../shared_services/file.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,12 +20,14 @@ export class NavbarComponent implements OnInit {
   private ens:boolean=false;
   private for:boolean=false;
   private bib:boolean=false;
+  user_connect:any;
   
   
-  constructor(private claservice:ClassesService,private router:Router,private Param:ParametreService) { }
+  constructor(private claservice:ClassesService,private router:Router,private Param:ParametreService,private service:FileService) { }
 
   ngOnInit() {
-    this.initialisation();
+  //  this.initialisation();
+    this.findUserConnect();
   }
   on(){
     this.etat = !this.etat;
@@ -46,6 +49,13 @@ export class NavbarComponent implements OnInit {
   sendName(val){
     this.Param.setName_classe(val);
 
+  }
+
+  findUserConnect(){
+    this.service.getStudentByLoginAndPassword(sessionStorage.getItem('login'),sessionStorage.getItem('password')).subscribe(
+      data =>{ this.user_connect = data;}
+    );
+    
   }
   
 

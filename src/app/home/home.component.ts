@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   arret(){
     sessionStorage.removeItem('login');
     sessionStorage.removeItem('password');
+    sessionStorage.removeItem('id');
     this.route.navigateByUrl("/login");
   }
 

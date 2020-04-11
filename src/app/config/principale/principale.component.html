@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div class="row" id="header">
+      <div>
+          <h3>Liste Des Proffesseur Principaux</h3>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+           <div class="row">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>ID</th><th>Nom Proffesseur</th><th>Nom De La Class</th><th>Login</th><th>Password</th><th>Operation</th>
+                  </tr>
+                </thead>
+      
+                <tbody>
+                  <tr *ngFor="let compo of principales">
+                    <td>{{compo.id}}</td><td>{{compo.enseignant.nom}}</td><td>{{compo.classes.nom}}</td><td>{{compo.login}}</td><td>{{compo.password}}</td><td><button class="btn btn-danger">Suprimer</button></td>
+                    <td>
+                       <!-- <button class="btn btn-sm btn-outline-primary" (click)="operation='edite' ; selectectCompo = compo ;updateCompo();">EDITE</button> -->
+                        
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+               
+           
+            
+            </div>
+
+
+        </div>
+        <div class="col-lg-offset-3 col-lg-4">
+            <div id="tete">
+                
+            </div>
+            <div id="form">
+                <p> Nouveau Prof Principale</p>
+               
+                <form>                
+                                              
+                        <div class="form-group">
+                            <label>Selctionez Le Proffesseur</label>
+                            <select class="form-control" name="prol" ngModel [(ngModel)]="prof">
+                                <option value="">Choisir Le Proffesseur</option>
+                                <option *ngFor ="let mat of enseignants">{{mat.nom}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Selctionez La Classe</label>
+                            <select class="form-control" name="classes" ngModel [(ngModel)]="classes" (change)="controlclasse(classes)">
+                                <option value="">Choisir La Classe</option>
+                                <option *ngFor ="let mat of listesClasses">{{mat.nom}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group error" *ngIf="occuper">
+                          <h6>Cette classe est deja Occuper</h6>
+                        </div>
+
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="(!prof)||(!classes)||(occuper)" (click)="savePrincipale()"  value="upload">SAVE</button>
+                            <button class="btn btn-danger">CANCEL</button>
+                        </div>
+                        <hr/>
+                
+                        
+
+                    
+                    
+                </form>
+            </div>
+           
+            <app-share></app-share>
+        </div>
+    </div>
+</div>
+
+

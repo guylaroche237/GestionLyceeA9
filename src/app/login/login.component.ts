@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   imageurl: string = "../../assets/images/profil.jpg";
   fileToUpload: File = null;
   public user:Student;
+  session_user:any;
   list: Student[];
   cleimg:string;
   private listesClasses :Classes[];
@@ -39,40 +40,30 @@ export class LoginComponent implements OnInit {
 
   constructor(private filedb: FileService,private claservice:ClassesService,private route:Router,private param:ParametreService) { }
 
-  ngOnInit() {
-    //const chifre = Math.floor(Math.random()*Math.floor(100));
-    this.cleimg = this.filedb.getKeyImage();
-
-    
-    
-    
-    console.log(this.filedb.getPhoto(55).source);
-    
+  ngOnInit() { 
     this.loadProduit();
     this.initialisation();
+
     if(this.isUserLoggerIn()){
-      if(sessionStorage.getItem('login')=='admin' && sessionStorage.getItem('password')=='admin'){
-        this.route.navigateByUrl("/admin/(adminOutlet:adens)");
-      }else{
-        this.route.navigateByUrl("/home/(contentOutlet:tchat)");
-      }
+      let usr;
+      this.filedb.getStudentByLoginAndPassword(sessionStorage.getItem('login'),sessionStorage.getItem('password')).subscribe(
+        data =>{ usr = data; this.filedb.Authentification(usr);}
+      );
+
+    //  if(usr.role=='admin'){this.route.navigateByUrl("/admin/(adminOutlet:adens)");
+    //  }else{  this.route.navigateByUrl("/home/(contentOutlet:tchat)"); }
      
     }
     //this.isUserLoggerIn();
   }
   
   handlerFileInput(file: FileList){
-   // File f = new File(event.target.,"tltl");
       this.fileToUpload =  file.item(0);
       var reader = new FileReader();
       reader.onload = (event: any) => {
        //  this.f = new File(event.target.result,"tltl");
       this.imageurl = event.target.result;  
-      
-    
-      this.taille_img = this.fileToUpload.size
-      
-      
+      this.taille_img = this.fileToUpload.size 
     }
     reader.readAsDataURL(this.fileToUpload);
   }
@@ -82,51 +73,32 @@ export class LoginComponent implements OnInit {
 
 
   OnSubmit(val){
-   
-  
-   var p = val;
+  // console.log(val);
    this.new_user = val;
-   
-   p.photo = this.cleimg;
-    val.keyimg = this.cleimg;
+   val.profil = this.fileToUpload;
+   //console.log(val);
     //console.log(val);
-   this.filedb.savePhoto(this.fileToUpload,this.cleimg).subscribe(
-    res => {   
-      this.loadProduit();
-  });
-
-
-  this.filedb.saveStudent(val).subscribe(
-    res =>{
-      this.loadProduit();
-      this.reset();
-    }
-  );
-
+  // this.filedb.savePhoto(this.fileToUpload,this.cleimg).subscribe( res => {this.loadProduit();});
+ // this.filedb.saveStudent(val,this.fileToUpload).subscribe( res =>{ this.loadProduit(); this.reset(); } ); 
+ // this.filedb.saveEleve(this.fileToUpload,val.nom,val.login,val.password,val.email,val.date,val.classe);
+  this.filedb.onSaveStudent(val.nom,val.login,val.password,val.email,val.classe,val.date,this.fileToUpload);
+  this.reset();
   }
 
-  loadProduit(){
-    this.filedb.getAllStudent().subscribe(
-      data => { this.list = data,console.log(this.list)},
-      error => {console.log('Une erreur s est produite')},
-      () => { console.log('chargement des produits effectuer')}
-    );
-  }
+  loadProduit(){this.filedb.getAllStudent().subscribe(data => { this.list = data}, error => {console.log('Une erreur s est produite')}, () => { console.log('chargement des produits effectuer')});}
 
   addUser(donner){
     
      this.filedb.getStudentByLoginAndPassword(donner.login,donner.password).subscribe(
       data => {
         this.user = data,
-        
-        this.param.setYourkey(this.user.keyimg);
+        this.new_user = data;
+        this.param.setUserConnect(this.user);
+      //  this.param.setYourkey(this.user.keyimg);
         this.erreur = this.filedb.present(this.user),
         
          this.setSessionUser(),
          this.filedb.Authentification(this.user)
-         
-        
-         //if(this.user){console.log(true);}else{console.log(true);}
 
         },
       error => {console.log("utilisateur non trouver")},
@@ -154,8 +126,9 @@ export class LoginComponent implements OnInit {
   }
 
   isUserLoggerIn(){
-    let lo = sessionStorage.getItem('login');
-    let pas = sessionStorage.getItem('password');
+   let lo = sessionStorage.getItem('login');
+  let pas = sessionStorage.getItem('password');
+  
     if(lo != null && pas != null){
       return true;
       //alert('vous etes connecter !!!');
@@ -169,7 +142,9 @@ export class LoginComponent implements OnInit {
     if(!this.erreur){
       sessionStorage.setItem('login',this.user.login);
       sessionStorage.setItem('password',this.user.password);
-      sessionStorage.setItem('cleimg',this.param.getYourKey());
+      sessionStorage.setItem('id',''+this.user.id);
+      
+     // sessionStorage.setItem('cleimg',this.param.getYourKey());
      }
 
 

@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="title">
+       <h2>Liste Des Bulletins</h2>
+    </div>
+    
+    <div class="container-fluid block">
+        <div class="row">
+           <div class="col-lg-9">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>ID</th><th>Moyene</th><th>Mention</th><th>Nom Eleve</th><th>Classe</th><th>Operation</th>
+                  </tr>
+                </thead>
+      
+                <tbody>
+                  <tr *ngFor="let compo of bulletins">
+                    <td>{{compo.id}}</td><td> {{compo.moyenne | number : '1.2-2'}}</td><td>{{compo.mention}}</td><td>{{compo.eleve}}</td><td>{{compo.classes}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" (click)="voirBulletin(compo.id);"><i class="fa fa-eye"></i>Voir +</button> 
+                        
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+           </div>
+
+
+           <div class="col-lg-3">
+            <div id="tete">
+                
+            </div>
+            <div id="form">
+                <p>Filtrer La Liste Des Bulletins</p>
+               
+                <form #imageForm="ngForm" (ngSubmit)="test(imageForm.value)">                                      
+                        <div class="form-group">
+                            <strong>Choisir La Classe</strong>
+                            <select class="form-control" name="salle" ngModel [(ngModel)]="salle" (change)="control(salle);">
+                                <option value="">Selectionner la classe</option>
+                                <option *ngFor ="let mat of listesClasses">{{mat.nom}}</option>
+                                
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>Choisir La Sequence </strong>
+                            <select class="form-control" name="salle" ngModel [(ngModel)]="salle" (change)="control(salle);">
+                                <option value="">Selectionner la classe</option>
+                                <option *ngFor ="let mat of ['Premiere','Deuxieme','Troisieme','Quatrieme','Cinquieme','Sixieme']">{{mat.nom}}</option>
+                                
+                            </select>
+                           
+                        </div>
+
+                        <div class="alert" *ngIf="erreur">
+                            <h6>Cette Classe a deja ete Configurer</h6>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="(!salle)||(erreur)" type="submit"  value="upload">Chercher</button>
+                            <button class="btn btn-danger" type="reset" >CANCEL</button>
+                        </div>
+                        <hr/>
+                
+                        
+
+                    
+                    
+                </form>
+            </div>
+           
+            <app-share></app-share>
+        </div>
+
+           
+      
+           
+         </div>
+           
+        
+    </div>
+  </div>
+
+

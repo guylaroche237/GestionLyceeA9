@@ -45,7 +45,8 @@
                   </form>
             </div>
 
-            <div class="" *ngIf="etat != false">
+            <div class="sign" *ngIf="etat != false">
+               
                 <div class="col-lg-4 form-signin pano">
 
                     <form #imageForm="ngForm" (ngSubmit)="OnSubmit(imageForm.value)" name="form">
@@ -55,7 +56,7 @@
                         <div class="img_error" *ngIf="taille_img >= 1048576"><p>Changez l'image taille superieur a 1Mo</p></div>
                         <div class="form-group ">
                             <div class="custom-file">
-                                <input type="file" #Image accept="image/*" name="keyimg" ngModel (change)="handlerFileInput($event.target.files)" class="custom-file-input" id="inputGroupFile01"/>
+                                <input type="file" #Image accept="image/*" name="file" ngModel (change)="handlerFileInput($event.target.files)" class="custom-file-input" id="inputGroupFile01"/>
                                 <label class="custom-file-label" for="inputGroupFile01">Photo de Profil</label>
                             </div>
                             
@@ -86,11 +87,11 @@
                            
                         </div>
     
-                        <div class="form-group decal">
+                       <!-- <div class="form-group decal">
                             <input type="text" name="adresse" ngModel
                                 class="form-control" placeholder="Adresse...">
                            
-                        </div>
+                        </div> -->
 
                         
                         <div class="form-group decal">
@@ -103,12 +104,13 @@
                         </div>
 
                         <div class="form-group decal">
-                            <mat-form-field>
-                            <input matInput [matDatepicker]="picker" name="date" ngModel placeholder="Date de Naissance"
+                            <input type="date"  name="date" ngModel placeholder="Date de Naissance" class="form-control">
+                          <!--  <mat-form-field>
+                            <input matInput [matDatepicker]="picker" type="date" name="date" ngModel placeholder="Date de Naissance"
                                 class="form-control" >
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
-                            </mat-form-field>
+                            </mat-form-field>-->
                         </div>
 
                         <div class="form-group decal">

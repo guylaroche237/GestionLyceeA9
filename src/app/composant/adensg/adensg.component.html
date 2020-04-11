@@ -1,22 +1,18 @@
-<!--<div class="container-fluide">
-    <div class="row" id="header">
-        <div>
-            <h3>LISTES DES ENSEIGNANTS DU LYCEE </h3>
-        </div>
-    </div>
-</div>-->
+
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
            <div class="row">
-            <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,0,9,8,3]" class="col-lg-4">
+               
+            <div *ngFor="let pers of enseignants" class="col-lg-4">
                 <div class="card mb-4 box-shadow">
-                  <img class="card-img-top" src="../assets/images/work.jpg" alt="Card image cap">
+                  <img class="card-img-top" [src]="convertImage(pers.photo)" width="100px" height="120px" alt="Card image cap">
                   <div class="card-body">
                     <p class="card-text">
-                        <strong>Name:</strong> <label>Kamga jule</label><br>
-                        <strong>Telephone:</strong> <label>679045</label><br>
-                        <strong>Email:</strong> <label> guylaroche@gmail.com</label>
+                        <strong>Name:</strong> <label>{{pers.nom}}</label><br>
+                        <strong>Telephone:</strong> <label>{{pers.tel}}</label><br>
+                        <strong>Email:</strong> <label> {{pers.email}}</label>
+                        <strong>Matiere:</strong> <label> {{pers.matiere}}</label>
                     </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
@@ -28,6 +24,7 @@
                   </div>
                 </div>
               </div>
+            
             </div>
 
 
@@ -47,7 +44,7 @@
 
                         <div class="form-group">
                             
-                            <input placeholder="Votre Mail" class="form-control" type="email" name="nom" [(ngModel)]="mail">
+                            <input placeholder="Votre Mail" class="form-control" type="email" name="email" [(ngModel)]="email">
                         </div>
 
                         <div class="form-group">
@@ -56,11 +53,19 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="file" (change)="onFileChanged($event)">
-                            <img [src] = "" height="100">
+                            <input type="file" name="photo" [(ngModel)]="photo" class="form-control" (change)="onFileChanged($event)">
+                            
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary"  value="upload">SAVE</button>
+                            <label>Choisr Votre Matiere</label>
+                            <select class="form-control" name="matiere" ngModel [(ngModel)]="matiere">
+                                <option value="">Choisir Matiere Enseigner</option>
+                                <option *ngFor ="let mat of matieres">{{mat}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="(!matiere)||(!nom)||(!tel)||(!email)||(!photo)" (click)="Enregistrer()"  value="upload">SAVE</button>
                             <button class="btn btn-danger">CANCEL</button>
                         </div>
                         <hr/>
