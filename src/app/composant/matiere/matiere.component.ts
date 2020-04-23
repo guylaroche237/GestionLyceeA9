@@ -13,6 +13,7 @@ export class MatiereComponent implements OnInit {
   private sale:string;
   matieres :Matiere [];
   tab:any;
+  base64Data:any;
 
 
   constructor(private param:ParametreService,private service_mat:MatiereService) { }
@@ -23,6 +24,14 @@ export class MatiereComponent implements OnInit {
       this.updateMatiere(this.sale);
       
   }
+
+  convertPdf(pdf){
+    // this.retrieveResonse = res;
+     this.base64Data = pdf;
+     let retrievedImage = 'data:application/pdf;base64,' + this.base64Data;
+     return retrievedImage;
+}
+
   updateMatiere(code:string){
     this.service_mat.getMatiereByClasse(code).subscribe(
       data => { this.matieres = data},

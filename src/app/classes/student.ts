@@ -1,5 +1,5 @@
 export class Student{
-    public id:Number;
+    public id:number;
    public nom:string;
    public  login:string;
    public  password:string;

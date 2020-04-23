@@ -21,7 +21,7 @@ export class TchatComponent implements OnInit {
   retrieveResonse:any;
   base64Data:any;
   retrievedImage:any;
-  user_connect:any;
+  userConnecter:any;
   
   
 
@@ -29,7 +29,7 @@ export class TchatComponent implements OnInit {
 
   ngOnInit() {
     this.findAllMessage();// retourne listes des messages
-    this.user_connect = this.param.getUserConnect(); // return utilisateur connecter
+   // this.user_connect = this.param.getUserConnect(); // return utilisateur connecter
     this.findUserConnect();
     this.id = Number(sessionStorage.getItem('id'));// consertion en entier
     
@@ -68,7 +68,7 @@ export class TchatComponent implements OnInit {
 
   findUserConnect(){
     this.service.getStudentByLoginAndPassword(sessionStorage.getItem('login'),sessionStorage.getItem('password')).subscribe(
-      data =>{ this.user_connect = data;}
+      data =>{ this.userConnecter = data; console.log(this.userConnecter);}
     );
     
   }

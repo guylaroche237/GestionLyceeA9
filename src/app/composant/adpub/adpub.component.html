@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+           <div class="row">
+               
+            <div *ngFor="let pers of  pubs" class="col-lg-3">
+                <div class="card mb-4 box-shadow">
+                  <img class="card-img-top" [src]="convertImage(pers.enseignant.photo)" width="100px" height="120px" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text">
+                        <small>Publier par :</small><label>{{pers.enseignant.nom | slice:0:5}}...</label><br>
+                        <label>{{pers.datepub | date:'fullDate'}}</label><br>
+                        <small>Comme:</small><label>{{pers.commentaire | slice:0:5}}...</label><br>
+                        <small>pour:</small><label>{{pers.concerner | slice:0:5}}...</label>
+                    </p>
+                    
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+            <div id="tete">
+                
+            </div>
+            <div id="form">
+                <p> Partagez Une Publication</p>
+               
+                <form>                
+                        <div class="form-group">
+                            <label>Un Commentaire</label>
+                            <textarea placeholder="Votre Nom" class="form-control" type="texte" name="commentaire" [(ngModel)]="commentaire" rows="5">
+                            </textarea>
+                            </div>
+
+                        <div class="form-group">
+                            <label>Choisr les concernes</label>
+                            <select class="form-control" name="clas" ngModel [(ngModel)]="clas">
+                                <option value="">choir le concerne</option>
+                                <option value="tous">tous</option>
+                                <option *ngFor ="let mat of listesClasses">{{mat.nom}}</option>
+                            </select>
+                        </div>                       
+
+                        <div class="form-group" *ngIf="param.getTypePub() == 0">
+                            <label>Photo Illustrative</label>
+                            <input type="file" name="photo" [(ngModel)]="photo" class="form-control" (change)="onFileChanged($event)">
+                            
+                        </div>
+                        <div class="form-group">
+                            <label>Vos Identifiants</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" class="form-control" name="login" [(ngModel)]="login" placeholder="login..">
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="passwor..">
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="(!commentaire)||(!clas)" (click)="Enregistrer()"  value="upload">SAVE</button>
+                            <button class="btn btn-danger">CANCEL</button>
+                        </div>
+                        <hr/>
+                
+                        
+
+                    
+                    
+                </form>
+            </div>
+           
+            <app-share></app-share>
+        </div>
+    </div>
+</div>
+
+

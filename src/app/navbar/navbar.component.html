@@ -9,8 +9,9 @@
 
            <p class="chapitre" (click)="onCompte()">Mon Compte<span class="pull-right"><i class="fa fa-user-o"></i></span></p>
            <div class="point" *ngIf="cpt">
-             <a  [routerLink]="[{outlets: {contentOutlet: 'compte' }} ]" >Composition</a>
-             <a href="#">Sanctions</a>
+             <a  [routerLink]="[{outlets: {contentOutlet: 'compte' }} ]" >Mes Compositions </a>
+             <a  [routerLink]="[{outlets: {contentOutlet: 'bulletins' }} ]" >Mes Bulletins </a>
+             <a href="#">Mes Sanctions</a>
              
            </div>
 

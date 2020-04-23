@@ -28,6 +28,7 @@ export class BulletinComponent implements OnInit {
   valeur:boolean = false;
   btnetat:boolean = false;
   listeBull:any = [];
+  present:boolean = false;
   constructor(private fileservice:ClassesService,private fileser:FileService,private composervice:AdminService,private composer:MatiereService) { }
 
   ngOnInit() {
@@ -132,7 +133,7 @@ export class BulletinComponent implements OnInit {
       i++;
     }
     this.composervice.saveBulletin(this.listeBull).subscribe(
-      data => { this.listeBull = [];}
+      data => { this.listeBull = [];this.btnetat=false; this.verificationPresent(data);}
     );
   }
 
@@ -157,6 +158,13 @@ export class BulletinComponent implements OnInit {
      
 
     }
+  }
+
+  verificationPresent(val){
+    if(val==true){
+      this.present = true;
+    }
+
   }
 
 }

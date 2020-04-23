@@ -9,13 +9,47 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto">
-                <li class="active"><a [routerLink]="[{outlets: {adminOutlet: 'adens' }} ]">Adm_Enseignants</a></li>
+                <li class="nav-item dropdown">
+                  <a class="" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nouveau</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a [routerLink]="[{outlets: {adminOutlet: 'adens' }} ]">Un Enseignant</a>
+                    <a [routerLink]="[{outlets: {adminOutlet: 'salle' }} ]">Une Classe</a>
+                  </div>
+                </li>
+
+                
                 <li><a [routerLink]="[{outlets: {adminOutlet: 'admatiere' }} ]">Adm_Matieres</a></li>
                 <li><a [routerLink]="[{outlets: {adminOutlet: 'adcompo' }} ]">Adm_Compositions</a></li>
-                <li><a [routerLink]="[{outlets: {adminOutlet: 'bulletin' }} ]">New_Bulletin</a></li>
-                <li><a [routerLink]="[{outlets: {adminOutlet: 'principale' }} ]">Adm_Principales</a></li>
-                <li><a [routerLink]="[{outlets: {adminOutlet: 'matcp' }} ]">Con_Matiere</a></li>
-                <li><a [routerLink]="[{outlets: {adminOutlet: 'listbulletin' }} ]">All_Bulletin</a></li>
+                 
+                <li class="nav-item dropdown">
+                  <a class="" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bulletins</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a [routerLink]="[{outlets: {adminOutlet: 'bulletin' }} ]">Nouveau Bulletin</a>
+                    <a [routerLink]="[{outlets: {adminOutlet: 'listbulletin' }} ]">Tous Les Bulletin</a>
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publier</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a (click)="setPubTypeT()" [routerLink]="[{outlets: {adminOutlet: 'publication' }} ]">Du Texte</a>
+                    <a (click)="setPubTypeP()" [routerLink]="[{outlets: {adminOutlet: 'publication' }} ]">Une Photo</a>
+                  </div>
+                </li>
+
+                
+                
+                
+                
+
+                <li class="nav-item dropdown">
+                  <a class="" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuration</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a [routerLink]="[{outlets: {adminOutlet: 'matcp' }} ]">Matiere Compos</a>
+                    <a [routerLink]="[{outlets: {adminOutlet: 'principale' }} ]">Prof Principale</a>
+                    
+                  </div>
+                </li>
 
               </ul>
               

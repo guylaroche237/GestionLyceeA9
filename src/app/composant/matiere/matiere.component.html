@@ -21,7 +21,9 @@
                       <strong>Nom :</strong> <label>{{elt.nom_matiere}}</label><br/>
                       <strong>Classe : </strong> <label> {{sale}}</label>
                   </div>
-                  <button type="button" class="btn btn-lg btn-block btn-primary">Voir Plus</button>
+                  <button type="button" class="btn btn-lg btn-block btn-primary">
+                      <a [href]="convertPdf(elt.cour)">Voir Plus</a>
+                  </button>
                </div>
             </div>
         </div>    

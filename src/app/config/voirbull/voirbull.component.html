@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <div class="title">
+        <h2>INFORMATION SUR LE BULLETIN</h2>
+     </div>
+
+     <div class="container-fluid block" id="contentToConvert">
+         <div class="bulletin">
+
+             <div class="header">
+                 <h4>Bulletin De Note: {{bulletin.sequence}} Sequence , Session 2019-2020</h4>
+             </div>
+
+             <div class="row header_two">
+                 <div class="col-lg-4 h_gauche">
+                     <div class="row">
+                        <strong>Lycee : _</strong><label>Bonamoussadi</label>
+                     </div>
+                     <div class="row">
+                        <strong>Adresse:_</strong><label>Face Palais Dika</label>
+                     </div>
+                     <div class="row">
+                        <strong>Telephone :_</strong><label>(+237) 6792064/656005532</label>
+                     </div>
+                     <div class="row">
+                        <strong>Fax :_</strong><label> 2689 Douala</label>
+                     </div>
+                     <div class="row">
+                        <strong>Mail :_</strong><label>lycbona@gmail.com</label>
+                     </div>
+                     
+                 </div>
+
+                 <div class="col-lg-4 logo">
+                     <img src="../../../assets/logo.png" id="logo">
+                 </div>
+
+                 <div class="col-lg-4 h_droite">
+                    <div class="row">
+                        <strong>Nom :_</strong><label>{{bulletin.eleve}}</label>
+                     </div>
+                     <div class="row">
+                        <strong>Date Naissance:_</strong><label>{{bulletin.composes[0].student.date | date:'fullDate'}}</label>
+                     </div>
+                     <div class="row">
+                        <strong>Effectif:</strong><label>67</label>
+                     </div>
+                     <div class="row">
+                        <strong>Redoublant </strong><label> Non</label>
+                     </div>
+                     
+
+                 </div>
+
+             </div>
+
+             <hr/>
+             <div class="prof">
+                 <p> <strong>ENSEIGNANT PRINCIPALE: Mr Feukam Guy Laroche (Ton BB)</strong>  </p>
+             </div>
+             <hr/>
+
+             <div class="bulletin">
+
+                <div class="col-lg-12">
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Matiere</th><th>Coefficient</th><th>Note</th><th>Total</th><th>Apreciation</th>
+                          </tr>
+                        </thead>
+              
+                        <tbody>
+                          <tr *ngFor="let compo of bulletin.composes">
+                            <td>{{compo.matiere.nom}}</td><td> {{compo.coef}}</td><td>{{compo.note}}</td><td>{{compo.total}}</td><td>{{compo.mention}}</td>
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                   </div>
+
+             </div>
+             <hr/>
+
+             <div class="footer">
+                 <div class="row">
+                     <div class="col-lg-4">
+                         <div class="row">
+                             <strong>Moyenne:_</strong> <small>{{bulletin.moyenne | number : '1.2-2'}} / 20</small>
+                         </div>
+                         <div class="row">
+                             <strong>Appreciation:_</strong><small>{{bulletin.mention}}</small>
+                        </div>
+                        <div class="row">
+                             <strong>Rang:_</strong> <small> 23 (eme)</small>
+                        </div>
+                     </div>
+                     <div class="col-lg-4"></div>
+
+                     <div class="col-lg-4">
+                         <strong>Le Proviseur: JULE AWANA</strong>
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+     <div class="container bouton">
+         <div class="form-group">
+             <button class="btn btn-primary" (click)="convetToPDF()" >Imprimer le Bulletin</button>
+         </div>
+     </div>
+</div>
+

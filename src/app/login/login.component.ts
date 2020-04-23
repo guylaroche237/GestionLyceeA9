@@ -91,9 +91,11 @@ export class LoginComponent implements OnInit {
     
      this.filedb.getStudentByLoginAndPassword(donner.login,donner.password).subscribe(
       data => {
+        console.log(data);
         this.user = data,
         this.new_user = data;
         this.param.setUserConnect(this.user);
+        this.param.setIdUser(this.user.id);
       //  this.param.setYourkey(this.user.keyimg);
         this.erreur = this.filedb.present(this.user),
         

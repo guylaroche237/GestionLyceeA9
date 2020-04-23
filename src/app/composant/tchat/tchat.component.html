@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" id="header">
         <div>
-            <h3>Bienvenue Au Forum Du Lycee Mr/Mlle : {{user_connect.nom}} {{user_connect.login}} </h3>
+            <h3 *ngIf="userConnecter">Bienvenue Au Forum Du Lycee Mr/Mlle : {{userConnecter.nom}} {{userConnecter.login}} </h3>
         </div>
     </div>
 </div>
@@ -12,7 +12,7 @@
       <img src="../../../assets/images/joel.jpg"/>
     </div>
     <div class="active">
-      <h4>Mon Amour</h4>
+      <h4>Non User</h4>
       <h6>3 hours ago...</h6>
     </div>
     <div class="header-icons">

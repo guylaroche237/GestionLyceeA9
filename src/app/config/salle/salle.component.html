@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+           <div class="row">
+               
+            <div *ngFor="let pers of listesClasses" class="col-lg-4">
+                <div class="card mb-4 box-shadow" *ngIf="pers.enseignants[0]">
+                  <div class="card-header">
+                      <h6>Salle :{{pers.nom}}</h6>
+                  </div>
+                  <div class="card-body">
+                    <p class="card-text">
+                        <strong>Id:</strong> <label>{{pers.id}}</label><br>
+                        <strong>Nombre Place:</strong> <label>{{pers.nbre}}</label><br>
+                        <strong>Professeur:</strong> <label>[ {{pers.enseignants[0].nom | slice: 0:6}},......]</label>
+                        
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-primary"><span>Voir+</span><i class="fa fa-eye"></i></button>
+                        <button type="button" class="btn btn-sm btn-danger"><span>remove</span><i class="fa fa-scissors"></i></button>
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+
+
+        </div>
+        <div class="col-lg-4">
+            <div id="tete">
+                
+            </div>
+            <div id="form">
+                <p>Nouvelle Salle de Classe</p>
+               
+                <form #infoForm="ngForm" (ngSubmit)="saveSalle(infoForm.value)">                                      
+                        <div class="form-group">
+                            <strong>Nom Classe</strong>
+                            <input type="text" class="form-control" name="salle" [(ngModel)]="salle">   
+                        </div>
+
+                        <div class="form-group">
+                            <strong>Nombre de place</strong>
+                            <input type="number" class="form-control" name="nbre" [(ngModel)]="nbre">
+                        </div>
+
+                        <div class="form-group">
+                            <strong>Choisir Les Professeur</strong>
+                            <hr/>
+                            <div class="row">
+                                <div *ngFor="let i of enseignants" class="col-lg-6">
+                                    <input type="checkbox" [name] ="i.nom" [value]="i.nom" ngModel [id]="i.nom">
+                                    <label>{{i.nom | slice: 0:12}}</label>
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                        <div class="alert" *ngIf="erreur">
+                            <h6>Cette Classe a deja ete Configurer</h6>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="(!salle)||(!nbre)" type="submit"  value="upload">SAVE</button>
+                            <button class="btn btn-danger" type="reset" >CANCEL</button>
+                        </div>
+                        <hr/>
+                
+                        
+
+                    
+                    
+                </form>
+            </div>
+           
+            <app-share></app-share>
+        </div>
+    </div>
+</div>
+
+
+

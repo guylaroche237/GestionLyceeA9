@@ -20,3 +20,40 @@
 #registre{
     margin-top: 5%;
 }
+
+#form{
+    border: solid green 1px;
+    margin: 2%;
+    padding: 3%;
+}
+#form p{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 4%;
+    font-family: cursive;
+    
+}
+button{
+    margin: 1px;
+}
+
+label{
+    font-size: 13px;
+    font-weight: 15px;
+    color: blue;
+}
+.error{
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: 12px;
+    padding: 10px;
+    
+}
+h6{
+    color: red;
+    font-size: 14px;
+    font-weight: 12px;
+}

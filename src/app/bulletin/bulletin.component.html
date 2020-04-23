@@ -25,6 +25,9 @@
         <div class="form-group message" *ngIf="val">
           <p>Impossible de Creer Le Bulletin Pour Cet Eleve : Matiere Incomplete</p>
         </div>
+        <div class="form-group message" *ngIf="present">
+          <p>Impossible de Dupliquer Ce Bulletin : Car il existe deja !!!</p>
+        </div>
         <div class="form-group message" *ngIf="valeur">
           <p>Aucune Composition Disponible Pour Cette Eleve</p>
         </div>

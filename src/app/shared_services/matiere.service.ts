@@ -33,9 +33,22 @@ export class MatiereService {
     return this.http.delete(this.baseUrl+'/delete/'+idm);
   }
 
-  saveMatiere(title:string,nom:string,classes:string): Observable<any>{
-    return this.http.post(this.baseUrl+'/save/'+title+'/'+nom+'/'+classes,this.obj);
+  saveMatiere(title:string,nom:string,classes:string,cour:File){
+      const formdata: FormData = new FormData();  
+      formdata.append('pdfFile', cour); 
+    return this.http.post(this.baseUrl+'/savecour/'+title+'/'+nom+'/'+classes,formdata,{observe: 'response'}).subscribe(
+       
+      (response)=>{
+        if(response.status === 200){
+          
+             console.log('sauvegarder avec success');
+        }else{
+          console.log('echouer echouer echouer !!!!');
+        }
+      }
+    );
   }
+
   getAllUnite(){
     return this.http.get(this.base+'/all');
   }

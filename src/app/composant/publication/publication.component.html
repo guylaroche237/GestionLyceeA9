@@ -9,19 +9,23 @@
 <div class="container">
     <div id="block">
 
-        <div class="publication" *ngFor="let i of [1,2,3,4,5,6,7,8,9,0,9]">
+        <div class="publication" *ngFor="let pers of pubs">
             <div class="publication-header">
                 <div class="publication-header-img">
-                    <img src="../../../assets/images/joel.jpg">
+                    <img [src]="convertImage(pers.enseignant.photo)">
                 </div>
                 <div class="title">
-                    <h4>Feukam Guy Laroche</h4>
-                    <h6>22 Octobre 2018 a 12h:25mn</h6>
+                    <h4>{{pers.enseignant.nom}}</h4>
+                    <h6>{{pers.datepub | date:'dd-MM-yy à h:mm:ss E'}}</h6>
                 </div>
+               
             </div>
+            <div class="pub-comm">
+                <p>{{pers.commentaire}}</p>
+             </div>
 
-            <div class="publication-body">
-                <img src="../../../assets/matiere/chimie.jpg">
+            <div class="publication-body" *ngIf="pers.type==0">
+                <img [src]="convertImage(pers.photo)">
             </div>
             <div class="publication-footer">
                 

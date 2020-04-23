@@ -1,0 +1,55 @@
+.title{
+	background-color: #8d23236b;
+	text-align: center;
+    padding: 20px;
+    color: white;
+	
+}
+.block{
+	border: 1px black solid;
+	margin-top: 5px;
+}
+.header{
+    padding: 10px;
+    text-align: center;
+    border: black 1px solid;
+    background-color: dimgray;
+    color: white;
+    margin-top: 10px;
+}
+#logo{
+    border:black solid 2px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+.header_two{
+    margin-top: 30px;
+    margin-left: 30px;
+    
+    
+}
+.prof{
+    border: black solid 1px;
+    text-align: center;
+    padding: 1px;
+    margin: 2px;
+    font-size: 15px;
+    font-weight: 17px;
+    color: blue;
+}
+small{
+    color: blue;
+    font-size: 15px;
+    font-weight: 15px;
+    font-family: cursive;
+}
+.footer{
+    margin-top: 30px;
+    margin-left: 60px;
+    margin-bottom: 50px;
+
+}
+.bouton{
+    margin-top: 20px;
+}

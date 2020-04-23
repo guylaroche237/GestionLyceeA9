@@ -1,60 +1,29 @@
-<div class="col-lg-12">
-
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Matiere</th>
-                <th scope="col">Date Composition</th>
-                <th scope="col">Sequence</th>
-                <th scope="col">Note/20</th>
-                <th scope="col">Mention</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let elt of [1,2,3,4,5,6,7,8]">
-                <td>{{elt}}</td>
-                <td>Mathematique</td>
-                <td>22/05/2020</td>
-                <td>3</td>
-                <td>{{elt*3+1}}</td>
-                <td>Passable</td>
-                
-
-        </tbody>
-    </table>
-
-    <div class="form-group">
-        <div class="row">
-            <div class="col-lg-3">
-                <button class="btn btn-primary" ng-click="">Imprimer Bulletin</button>
-            </div>
-
-            <div class="col-lg-4">
-                <select class="form-control" name="classe" ngModel >
-                    <option>1 trimestre</option>
-                    <option>1 sequence</option>
-                    <option>2 sequence</option>
-                    <option>2 trimestre</option>
-                    <option>3 sequence</option>
-                    <option>4 sequence</option>
-                    <option>3 trimestre</option>
-                    <option>5 sequence</option>
-                    <option>6 sequence</option>
-                   
-                </select>
-                
-            </div>
+<div class="container-fluid">
+    <div class="row" id="header">
+        <div>
+            <h3>VOS DIFFERENTES NOTE PERSONELLE</h3>
         </div>
-       
-
-
-
-
-
-
-
-       
-        
     </div>
 </div>
+
+<div class="container-fluid">
+
+    <div class="col-lg-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th><th>    Date</th><th>Mention</th><th>Note</th><th>SEQUENCE</th><th>Matiere</th><th>Etudiant</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let compo of tab_compo">
+              <td>{{compo.id}}</td><td> <button class="btn btn-sm btn-primary">{{compo.date | date:'dd-MM-yy' }}</button></td><td>{{compo.mention}}</td><td>{{compo.note}}</td><td>{{compo.sequence}}</td><td>{{compo.matiere.nom}}</td><td>{{compo.student.nom}}</td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
+
+

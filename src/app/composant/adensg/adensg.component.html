@@ -42,9 +42,16 @@
                             <input placeholder="Votre Nom" class="form-control" type="text" name="nom" [(ngModel)]="nom">
                         </div>
 
-                        <div class="form-group">
-                            
+                        <div class="form-group"> 
                             <input placeholder="Votre Mail" class="form-control" type="email" name="email" [(ngModel)]="email">
+                        </div>
+
+                        <div class="form-group"> 
+                            <input placeholder="Votre Login" class="form-control" type="text" name="login" [(ngModel)]="login">
+                        </div>
+
+                        <div class="form-group"> 
+                            <input placeholder="Votre Password" class="form-control" type="password" name="password" [(ngModel)]="password">
                         </div>
 
                         <div class="form-group">
@@ -65,7 +72,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button class="btn btn-primary" [disabled]="(!matiere)||(!nom)||(!tel)||(!email)||(!photo)" (click)="Enregistrer()"  value="upload">SAVE</button>
+                            <button class="btn btn-primary" [disabled]="(!matiere)||(!nom)||(!tel)||(!email)||(!photo)||(!login)||(!password)" (click)="Enregistrer()"  value="upload">SAVE</button>
                             <button class="btn btn-danger">CANCEL</button>
                         </div>
                         <hr/>

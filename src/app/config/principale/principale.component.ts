@@ -25,8 +25,8 @@ export class PrincipaleComponent implements OnInit {
     this.verification();
     this.getAllTeacher();
     this.loadClasse();
-    this.login = this.getKeycode();
-    this.pass = this.getKeycode();
+   // this.login = this.getKeycode();
+   // this.pass = this.getKeycode();
     this.allPrincipale();
     //alert(this.login +'______'+this.pass);
   }
@@ -61,7 +61,7 @@ export class PrincipaleComponent implements OnInit {
   }
 
   savePrincipale(){
-    this.fileservice.savePrincipale(this.login,this.pass,this.prof,this.classes).subscribe(
+    this.fileservice.savePrincipale(this.prof,this.classes).subscribe(
       data => { this.allPrincipale();this.initialisation(); }
     );
   }

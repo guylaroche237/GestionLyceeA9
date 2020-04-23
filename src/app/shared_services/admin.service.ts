@@ -19,6 +19,10 @@ export class AdminService {
   getAllCompo(): Observable<any>{
     return this.http.get(this.compoURL+'/all');
   }
+  getAllCompoByStudentId(id:number){
+    return this.http.get(this.compoURL+'/all/student/'+id);
+
+  }
 
   getStudentByClasse(cls:string): Observable<any>{
     return this.http.get(this.studentURL+'/students/'+cls);
@@ -39,6 +43,9 @@ export class AdminService {
   }
   getBulletinById(id){
     return this.http.get(this.urlBulletin+'/id/'+id);
+  }
+  getBulletinStudentById(id){
+    return this.http.get(this.urlBulletin+'/id/student/'+id);
   }
 
 

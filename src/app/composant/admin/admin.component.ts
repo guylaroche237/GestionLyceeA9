@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import { ParametreService } from "src/app/shared_services/parametre.service";
+import { from } from 'rxjs';
 
 
 @Component({
@@ -10,7 +12,7 @@ import {Router} from "@angular/router";
 export class AdminComponent implements OnInit {
   super:boolean = false;
  
-  constructor(private route:Router) { }
+  constructor(private route:Router,private param:ParametreService) { }
 
   ngOnInit() {
   
@@ -27,6 +29,14 @@ export class AdminComponent implements OnInit {
    // this.route.navigate(['auth']);
    // this.route.navigate(['super']);
     this.route.navigateByUrl("/admin/(adminOutlet:auth)");
+  }
+  setPubTypeT(){
+    this.param.setTypePub(1);
+
+  }
+  setPubTypeP(){
+    this.param.setTypePub(0);
+
   }
  
 

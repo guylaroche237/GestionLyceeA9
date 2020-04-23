@@ -29,6 +29,12 @@
 .publication-header{
     background-color: darkgray;
 }
+.pub-comm{
+    border: black 2px solid;
+    font-size: 14px;
+    font-weight: 13px;
+    padding: 5px;
+}
 
 .publication-header-img{
   width: 70px;

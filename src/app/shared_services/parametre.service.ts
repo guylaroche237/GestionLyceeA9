@@ -12,11 +12,12 @@ export class ParametreService {
 
   public name_classe:string;
   matieres :Matiere [];
-  idUser:Number;
+  idUser:number;
   private baseUrl:string = "http://localhost:8000/api";
   your_key:string;
   user_connecter:any;
   id_bulletin:number;
+  pub_type:number=0;
 
   constructor(private http: HttpClient) { }
 
@@ -24,7 +25,7 @@ export class ParametreService {
    this.name_classe = name;
 
   }
-  setIdUser(id:Number){
+  setIdUser(id:number){
      this.idUser = id;
   }
   getIdUser(){
@@ -55,6 +56,12 @@ export class ParametreService {
   }
   getIdbulletin(){
     return this.id_bulletin;
+  }
+  setTypePub(val){
+    this.pub_type = val;
+  }
+  getTypePub(){
+    return this.pub_type;
   }
 
   

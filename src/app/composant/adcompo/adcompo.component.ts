@@ -4,6 +4,7 @@ import { ClassesService} from '../../shared_services/classes.service';
 import { Classes } from '../../classes/classes';
 import { Student } from 'src/app/classes/student';
 import { MatiereService } from 'src/app/shared_services/matiere.service';
+import { FileService } from 'src/app/shared_services/file.service';
 
 @Component({
   selector: 'app-adcompo',
@@ -19,10 +20,16 @@ export class AdcompoComponent implements OnInit {
   selectectCompo:any;
   del:boolean = false;
   compo:any;
-  
-  note;seq;mat;clas;stu;
+  etape:boolean = false;
+  login:string;
+  password:string;
+  note;seq;mat;
+  clas:string;stu;
+  connect:boolean = false;
+  rep:any;
+  valider:boolean=false;
 
-  constructor(private composervice:AdminService,private claservice:ClassesService,private matiereservice:MatiereService) { }
+  constructor(private composervice:AdminService,private claservice:ClassesService,private matiereservice:MatiereService,private fileser:FileService) { }
 
   ngOnInit() {
     this.findAllCompo();
@@ -31,7 +38,7 @@ export class AdcompoComponent implements OnInit {
 
   findAllCompo(){
     this.composervice.getAllCompo().subscribe(
-      data => {this.tab_compo = data},
+      data => {this.tab_compo = data;console.log(data);},
       error => { console.log("erreur de requete")}
     );
   }
@@ -56,16 +63,18 @@ export class AdcompoComponent implements OnInit {
   }
   saveCompo(data){
     console.log(data);
-     this.composervice.saveCompo(data.note,data.seq,data.mat,data.clas,data.stu,data.coef).subscribe(
-      res => {
+     this.composervice.saveCompo(data.note,data.seq,data.mat,this.clas,data.stu,data.coef).subscribe(
+      data => {
+         this.rep = data;
+         this.compoValider(this.rep);
         this.findAllCompo();this.restart();
       }
     );
   }
 
   restart(){
-    this.note=0;
-    this.seq ="";this.mat="";this.clas="";this.stu="";
+    this.note=null;
+    this.seq =null;this.mat=null;this.stu=null;
 
   }
   updateCompo(){
@@ -84,6 +93,28 @@ export class AdcompoComponent implements OnInit {
       }
     );
 
+  }
+
+  connecter(){
+    
+    this.fileser.verifEnseignantByloginAndPasswordAndClasse(this.login,this.password,this.clas).subscribe(
+      data => {this.rep = data;console.log(this.rep==true);this.verif(this.rep);}
+    );
+    this.findStudentByClasse(this.clas);
+    this.findMatiereByClasse(this.clas);
+    
+  }
+  verif(val){
+    if(val == true){
+      this.etape = true;
+    }else{
+      this.connect = true;
+    }
+
+  }
+
+  compoValider(val){
+    if(val==true){this.valider=true;}else{this.valider=false;}
   }
 
 }

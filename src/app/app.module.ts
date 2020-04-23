@@ -42,6 +42,10 @@ import { PrincipaleComponent } from './config/principale/principale.component';
 import { MatierecompoComponent } from './config/matierecompo/matierecompo.component';
 import { ListbulletinComponent } from './config/listbulletin/listbulletin.component';
 import { CarnetComponent } from './config/carnet/carnet.component';
+import { MycarnetComponent } from './config/mycarnet/mycarnet.component';
+import { VoirbullComponent } from './config/voirbull/voirbull.component';
+import { SalleComponent } from './config/salle/salle.component';
+import { AdpubComponent } from './composant/adpub/adpub.component';
 
 
 
@@ -70,7 +74,11 @@ import { CarnetComponent } from './config/carnet/carnet.component';
     PrincipaleComponent,
     MatierecompoComponent,
     ListbulletinComponent,
-    CarnetComponent
+    CarnetComponent,
+    MycarnetComponent,
+    VoirbullComponent,
+    SalleComponent,
+    AdpubComponent
   ],
   imports: [
     BrowserModule,

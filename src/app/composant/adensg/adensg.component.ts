@@ -16,7 +16,7 @@ export class AdensgComponent implements OnInit {
   base64Data:any;
   convertedImage:any;
   message:string;
-  nom:string;
+  nom:string;login:string;password:string;
   email:string;
   tel:number;
   matiere:string;
@@ -64,7 +64,8 @@ export class AdensgComponent implements OnInit {
 
       Enregistrer(){
         
-        this.fileservice.SaveEnseignant(this.nom,this.tel,this.email,this.matiere,this.selectedFile);
+        
+        this.fileservice.SaveEnseignant(this.nom,this.tel,this.email,this.matiere,this.selectedFile,this.login,this.password);
         
         this.initialisation();
         this.getAllTeacher();

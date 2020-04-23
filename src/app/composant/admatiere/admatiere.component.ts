@@ -19,6 +19,9 @@ export class AdmatiereComponent implements OnInit {
   private del:boolean=true;
   private titres= ["Math","Histoire","Francais","Philosophie","Informatique","Physique","Chimie"];
   private listesClasses :Classes[];
+  
+  selectedFile:any;
+  pdfURL:any;
   titre;
   name;
   cl;
@@ -32,9 +35,20 @@ export class AdmatiereComponent implements OnInit {
     this.loadClasse();
    
   }
+
+  public onFileChanged(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
+
+    let reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = (event) =>{ this.pdfURL = reader.result;}
+  }
+
   loadAllMatieres(){
     this.matiereservice.getAllMatieres().subscribe(
-      data => {this.matieres = data,console.log(data)},
+      data => {this.matieres = data},
       error => { console.log("Url Introuvable")}
     )
   }
@@ -47,15 +61,16 @@ export class AdmatiereComponent implements OnInit {
     );
   }
 
+ 
+
   saveMatiere(data){
    // console.log(data);
-     this.matiereservice.saveMatiere(data.titre,data.name,data.cl).subscribe(
-      res => {
+     this.matiereservice.saveMatiere(data.titre,data.name,data.cl,this.selectedFile);
+      
          this.operation = "";
          this.init();
          this.loadAllMatieres();
-      }
-    );
+        
   }
   init(){
     this.titre ="";

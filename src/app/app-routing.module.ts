@@ -19,6 +19,10 @@ import { PrincipaleComponent } from './config/principale/principale.component';
 import { MatierecompoComponent } from './config/matierecompo/matierecompo.component';
 import { ListbulletinComponent } from './config/listbulletin/listbulletin.component';
 import { CarnetComponent } from './config/carnet/carnet.component';
+import { MycarnetComponent } from './config/mycarnet/mycarnet.component';
+import { VoirbullComponent } from './config/voirbull/voirbull.component';
+import { SalleComponent } from './config/salle/salle.component';
+import { AdpubComponent } from './composant/adpub/adpub.component';
 
 
 const routes: Routes = [
@@ -31,7 +35,9 @@ const routes: Routes = [
      {path: 'enseignant',component:EnseignantComponent,outlet:'contentOutlet'},
      {path: 'compte',component:CompteComponent,outlet:'contentOutlet'},
      {path: 'tchat',component:TchatComponent,outlet:'contentOutlet'},
-     {path: 'publication',component:PublicationComponent,outlet:'contentOutlet'}
+     {path: 'publication',component:PublicationComponent,outlet:'contentOutlet'},
+     {path: 'bulletins',component:MycarnetComponent,outlet:'contentOutlet'},
+     {path: 'bull',component:VoirbullComponent,outlet:'contentOutlet'}
    ]
 },
  // {path: 'home/matiere', component: MatiereComponent},
@@ -46,7 +52,9 @@ const routes: Routes = [
     {path:'principale',component:PrincipaleComponent,outlet:'adminOutlet'},
     {path: 'matcp',component: MatierecompoComponent,outlet:'adminOutlet'},
     {path: 'listbulletin',component:ListbulletinComponent,outlet:'adminOutlet'},
-    {path: 'carnet', component:CarnetComponent,outlet:'adminOutlet'}
+    {path: 'carnet', component:CarnetComponent,outlet:'adminOutlet'},
+    {path: 'salle', component:SalleComponent,outlet:'adminOutlet'},
+    {path: 'publication',component:AdpubComponent,outlet:'adminOutlet'}
 
    ]
 }

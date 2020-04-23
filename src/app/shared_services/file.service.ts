@@ -7,6 +7,7 @@ import { User } from '../classes/user';
 import { Router } from '@angular/router';
 import { ParametreService } from './parametre.service';
 import { element } from 'protractor';
+import { LoginComponent } from '../login/login.component';
 
 
 @Injectable()
@@ -55,10 +56,10 @@ export class FileService {
         
     }
 
-    SaveEnseignant(nom:string,tel:number,email:string,matiere:string,photo:File){
+    SaveEnseignant(nom:string,tel:number,email:string,matiere:string,photo:File,login:string,password:string){
       const formdata: FormData = new FormData();  
       formdata.append('imageFile', photo); 
-      return this.http.post(this.baseUrl+'/enseignant/save/'+nom+'/'+tel+'/'+email+'/'+matiere,formdata,{ observe: 'response' }).subscribe(
+      return this.http.post(this.baseUrl+'/enseignant/save/'+nom+'/'+tel+'/'+email+'/'+matiere+'/'+login+'/'+password,formdata,{ observe: 'response' }).subscribe(
         (response)=>{
           if(response.status === 200){
             alert("tout est ok");
@@ -74,6 +75,14 @@ export class FileService {
     getAllEnseignant(){
       return this.http.get(this.baseUrl+'/enseignant/all');
     }
+    verifEnseignantByloginAndPasswordAndClasse(login:string,password:string,salle:string){
+      return this.http.get(this.baseUrl+'/enseignant/sign/'+login+'/'+password+'/'+salle);
+    }
+
+    findEnseignantByloginAndPassword(login:string,password:string){
+      return this.http.get(this.baseUrl+'/enseignant/sign/'+login+'/'+password);
+    }
+
     getPhoto(cle:number): Observable<any>{
       return this.http.get(this.baseUrl+'/profil/get/'+cle);
     }
@@ -134,8 +143,8 @@ export class FileService {
     }
   }
 
-  savePrincipale(login:string,pass:string,name:string,sale:string){
-    return this.http.post(this.baseUrl+'/principale/save/'+login+'/'+pass+'/'+name+'/'+sale,this.obj);
+  savePrincipale(name:string,sale:string){
+    return this.http.post(this.baseUrl+'/principale/save/'+name+'/'+sale,this.obj);
   }
   allPrincipale(){
     return this.http.get(this.baseUrl+'/principale/all');
